@@ -15,21 +15,20 @@
     <ul class="nav navbar-right">
       <% if manager_signed_in? %>
         <li class="", style="display: inline-block;">
-          <%= link_to "#" %>
-            <i class="fas fa-home">Home</i>
+          <%= link_to "商品一覧", managers_path %>
         </li>
         <li class="", style="display: inline-block;">
-          <%= link_to "#" %>
-            <i class="fas fa-user">Users</i>
+          <%= link_to "会員一覧", managers_path %>
         </li>
         <li class="", style="display: inline-block;">
-          <%= link_to "#" %>
-            <i class="fas fa-user">Books</i>
+          <%= link_to "注文履歴一覧", managers_path %>
         </li>
         <li class="", style="display: inline-block;">
-          <%= link_to "#", method: :delete  do %>
-            <i class="fas fa-sign-out-alt">logout</i>
-          <% end %>
+          <%= link_to "ジャンル一覧", managers_path %>
+        </li>
+        <li class="", style="display: inline-block;">
+          <%= link_to "ログアウト", destroy_manager_session_path, method: :delete %>
+          
         </li>
       <% else %>
         <li class="", style="display: inline-block;">
@@ -39,10 +38,10 @@
           <%= link_to "商品一覧", "/managers/sign_in" %>
         </li>
         <li class="", style="display: inline-block;">
-          <%= link_to "新規登録", "/managers/sign_in" %>
+          <%= link_to "新規登録", new_manager_registration_path %>
         </li>
         <li class="", style="display: inline-block;">
-          <%= link_to "ログイン", "/managers/sign_in" %>
+          <%= link_to "ログイン", new_manager_session_path %>
         </li>
       <% end %>
     </ul>
