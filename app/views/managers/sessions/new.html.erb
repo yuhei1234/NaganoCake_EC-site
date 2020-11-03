@@ -1,26 +1,22 @@
-<h2>Log in</h2>
+<div style="width: 500px; margin: 100px auto;">
+  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">管理者ログイン</h4>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_with model: @manager, url: manager_session_path, local: true do |f| %>
+    <div class="field" style="margin-top: 30px; margin-left: 100px;">
+      <%= "メールアドレス" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="field", style="margin: 20px 0 15px 127px;">
+      <%= "パスワード" %>
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+    
+    <div class="action" style="margin-top: 20px; margin-left: 250px;">
+      <button type="button" class="btn btn-m btn-info" style="padding: 5px 50px;">ログイン
+          <% link_to "#" %>
+      </button>
     </div>
   <% end %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "managers/shared/links" %>

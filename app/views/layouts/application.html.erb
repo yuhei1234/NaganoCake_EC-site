@@ -9,6 +9,45 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<!----css => app/assets/stylesheets/application.scss>-->
+  <nav class="header-navigation">
+    <div class="nav-header">LOGO</div>
+    <ul class="nav navbar-right">
+      <% if manager_signed_in? %>
+        <li class="", style="display: inline-block;">
+          <%= link_to "#" %>
+            <i class="fas fa-home">Home</i>
+        </li>
+        <li class="", style="display: inline-block;">
+          <%= link_to "#" %>
+            <i class="fas fa-user">Users</i>
+        </li>
+        <li class="", style="display: inline-block;">
+          <%= link_to "#" %>
+            <i class="fas fa-user">Books</i>
+        </li>
+        <li class="", style="display: inline-block;">
+          <%= link_to "#", method: :delete  do %>
+            <i class="fas fa-sign-out-alt">logout</i>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="", style="display: inline-block;">
+          <%= link_to "About", "/managers/sign_in" %>
+        </li>
+        <li class="", style="display: inline-block;">
+          <%= link_to "商品一覧", "/managers/sign_in" %>
+        </li>
+        <li class="", style="display: inline-block;">
+          <%= link_to "新規登録", "/managers/sign_in" %>
+        </li>
+        <li class="", style="display: inline-block;">
+          <%= link_to "ログイン", "/managers/sign_in" %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
   <body>
     <%= yield %>
   </body>
