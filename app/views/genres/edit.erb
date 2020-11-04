@@ -1,0 +1,15 @@
+<div style="margin-top: 50px; margin-left: 100px;">
+  <h4 style="width: 200px; text-align: center; background-color: #d5d5d5;">ジャンル編集</h4>
+</div>
+
+<div>
+  <%= form_with model: @genre, url: genre_path, local: true do |f| %>
+    <div style="margin-top: 50px; margin-left: 50px;">
+      <%= "ジャンル" %>
+      <%= f.text_field :name, style: "margin: 0 20px;" %>
+      <%= f.radio_button :is_active, :true %><%= label_tag "有効" %>
+      <span style="margin-left: 5px; margin-right: 10px;"><%= f.radio_button :is_active, :false %><%= label_tag "無効" %></span>
+      <%= f.submit "変更を保存する", class: "btn btn-m btn-info"%>
+    </div>
+  <% end %>
+</div>
