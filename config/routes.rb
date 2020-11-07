@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "managers/items#show"
+  root "managers/orders#index"
   
   # managers
   devise_for :managers, controllers: {
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   
   scope module: :customers do
     resources :items, only: [:index, :show]
+    resources :orders
   end
   # /customers
   
