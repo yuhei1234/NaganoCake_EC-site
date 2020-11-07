@@ -1,0 +1,37 @@
+<div style="margin-top: 50px; margin-left: 100px;">
+  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">会員情報編集</h4>
+</div>
+
+<dev>
+  <%= form_with model:@customer, url: , local: true do %>
+    <div class="">
+      <%= "会員ID" %><%= @customer.id %>
+    </div>
+  
+    <div class="">
+      <%= "氏名" %><%= f.text_field :last_name %><%= f.text_field :first_name %>
+    </div>
+    <div>
+      <%= "フリガナ" %><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+    </div>
+    <div>
+      <%= "郵便番号" %><%= f.text_field :post_number %>
+    </div>
+    <div>
+      <%= "住所" %><%= f.text_field :address %>
+    </div>
+    <div>
+      <%= "電話番号" %><%= f.text_field :phone_number %>
+    </div>
+    <div>
+      <%= "メールアドレス" %><%= f.text_field :email %>
+    </div>
+    
+  <% end %>
+ </div>
+  
+  <div class="">
+    <%= button_to "編集する", edit_managers_customer_path(customer.id), method: :get, class: "btn btn-primary" %>
+    <%= button_to "注文履歴一覧を見る", managers_order_items_path(customer.id), method: :get, class: "btn btn-primary" %>
+  </div>
+</dev>
