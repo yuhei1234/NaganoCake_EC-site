@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <%= form_with model: @genre, url: genre_path, local: true do |f| %>
+  <%= form_with model: @genre, url: managers_genre_path, local: true do |f| %>
     <div style="margin-top: 50px; margin-left: 50px;">
       <%= "ジャンル" %>
       <%= f.text_field :name, style: "margin: 0 20px;" %>

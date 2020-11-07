@@ -1,0 +1,31 @@
+<div style="margin-top: 50px; margin-left: 100px;">
+  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">商品詳細</h4>
+</div>
+
+<dev>
+  <div class="col-lg-3">
+    <%= attachment_image_tag @item, :image, :fill, 250, 250, class: "profile-thumb", fallback: "no_image.jpg" %>
+  </div>
+  
+  <div class="col-lg-6">
+    <p>
+      <%= "商品名" %><%= @item.name %>
+    </p>
+    <p>
+      <%= "商品説明" %><%= @item.introduction %>
+    </p>
+    <p>
+      <%= "ジャンル" %><%= @item.genre_id %>
+    </p>
+    <p>
+      <%= "税込価格(税抜価格）" %><%= (@item.price * 1.10).round %><%= "(#{@item.price})" %><%= "円" %>
+    </p>
+    <p>
+      <%= "販売ステータス" %><%= @item.is_active %>
+    </p>
+  </div>
+  
+  <div class="col-lg-3">
+    <%= button_to "編集する", edit_managers_item_path(@item), method: :get, class: "btn btn-primary" %>
+  </div>
+</dev>
