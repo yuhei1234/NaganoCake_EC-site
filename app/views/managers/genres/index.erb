@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <%= form_with model: @genre, url: genres_path, local: true do |f| %>
+  <%= form_with model: @genre, url: managers_genres_path, local: true do |f| %>
     <div style="margin-top: 50px; margin-left: 50px;">
       <%= "ジャンル" %>
       <%= f.text_field :name, style: "margin: 0 20px;" %>
@@ -30,7 +30,7 @@
           <%= "無効" %>
         <% end %>
       </td>
-      <td><%= button_to "編集する", edit_genre_path(genre.id), method: :get, class: "btn btn-sm btn-primary" %></td>
+      <td><%= button_to "編集する", edit_managers_genre_path(genre.id), method: :get, class: "btn btn-sm btn-primary" %></td>
     </tr>
   <% end %>
 </table>
