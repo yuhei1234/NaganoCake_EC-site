@@ -1,0 +1,23 @@
+<div style="margin-top: 50px; margin-left: 100px;">
+  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">注文履歴一覧</h4>
+</div>
+
+<table class="table table-striped", style="margin-top: 50px; margin-left: 100px; width: 70%;">
+  <tr>
+    <th>購入日時</th>
+    <th>購入者</th>
+    <th>注文個数</th>
+    <th>注文ステータス</th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td>
+        <%= link_to managers_customer_path(customer) do %>
+          <%= order.create_at %></td>
+        <% end %>
+      <td><%= order.name %></td>
+      <td><%= order.name %></td>
+      <td><%= order.progress_status %></td>
+    </tr>
+  <% end %>
+</table>
