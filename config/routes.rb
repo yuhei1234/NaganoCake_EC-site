@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "customers#index"
+  root to: "customers#top"
   
   # managers
   devise_for :managers, controllers: {
@@ -18,14 +18,15 @@ Rails.application.routes.draw do
   
   
   # customers
-  devise_for :customers
-  
   get "/customers/about" => "customers#about"
   
   scope module: :customers do
     resources :items, only: [:index, :show]
     resources :orders
   end
+  
+  devise_for :customers
+  
   # /customers
   
   
