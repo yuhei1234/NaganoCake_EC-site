@@ -1,0 +1,35 @@
+<div class="col-lg-3">
+  <table style="border: 2px solid; margin-top: 100px;margin-left: 20px;">
+    <tr>
+      <th style="font-size: 20px; padding: 3px 60px; background-color: #fff4a5; border-bottom: 2px solid;">ジャンル検索</th>
+    </tr>
+    <% @genres.each do |genre| %>
+      <% if genre.is_active == true %>
+        <tr>
+          <td style="font-size: 20px; padding-left: 5px; padding-bottom: 20px;"><%= genre.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="col-lg-9">
+  <div>
+    <div style="margin-top: 100px; display: flex; justify-contents: center;">
+      <div style="object-fit: cover;">
+        <%= attachment_image_tag @item, :image, :fill, 300, 300, class: "profile-thumb", fallback: "no_image.jpg" %>
+      </div>
+      <div style="margin-left: 20px;">
+        <h3><%= @item.name %></h3>
+        <p style="margin-top: 20px; height: 150px;"><%= @item.introduction %></p>
+        <h3><span style="margin-right: 5px;">¥</span><%= @item.price %><span style="margin-left: 5px; font-size: 15px;">（税込）</span></h3>
+      </div>
+      <div>
+        個数選択
+      </div>
+      <div>
+        カートに入れるボタン
+      </div>
+    </div>
+  </div>
+</div>
