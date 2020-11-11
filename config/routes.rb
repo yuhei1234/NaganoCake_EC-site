@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "customers/items#index"
+  root to: "customers/order_items#new"
   
   # managers
   devise_for :managers, controllers: {
@@ -19,10 +19,14 @@ Rails.application.routes.draw do
   
   # customers
   get "/customers/about" => "customers#about"
+  get "/customers/order_item/confilm" => "customers/order_items#confilm"
+  get "/customers/order_item/thanks" => "customers/order_items#thanks"
   
   scope module: :customers do
     resources :items, only: [:index, :show]
     resources :orders
+    resources :delivers
+    resources :order_items
   end
   
   devise_for :customers
