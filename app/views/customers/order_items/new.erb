@@ -1,0 +1,60 @@
+<div style="margin-top: 50px; margin-left: 100px;">
+  <h4 style="width: 200px; text-align: center; background-color: #d5d5d5;">注文情報入力</h4>
+</div>
+
+<div class="payment_method">
+  <h4>支払方法</h4>
+  <div>
+    <%= form_with model: @order, local: true do |f| %>
+      <% @orders.each do |order| %>
+        <p><%= f.select order.payment_method %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="deliver_info">
+  <h4>お届け先</h4>
+  <div>
+    <%= form_with model: @order, local: true do |f| %>
+      <div>
+        <%= f.radio_button :address, checked: true %>
+        <%= f.label :address, "ご自身の住所" %>
+      </div>
+      <p>
+        <%= @order.post_number %>
+        <%= @order.address %>
+      </p>
+      <p>
+        <%= @order.name %>
+      </p>
+      
+      <div>
+        <%= f.radio_button :address %>
+        <%= f.label :address, "登録済住所から選択" %>
+        <%= form_with model: @deliver, local: true do %>
+          <% @delivers.each do %>
+            <%= f.collection_select :customer_id, Deliver.all, :id, :address, :prompt => "--配送先を選択してください--" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <div>
+      <%= form_with model: @deliver, url: delivers_path, local: true do |f| %>
+        <div style="margin-bottom: 10px;">
+          <span style="margin-right: 50px;">郵便番号（ハイフンなし）</span>
+          <%= f.text_field :post_number %>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <span style="margin-right: 190px;">住所</span>
+          <%= f.text_field :address, style: "width: 400px;" %>
+        </div>
+        <div>
+          <span style="margin-right: 190px;">宛名</span>
+          <%= f.text_field :name %>
+          <%= f.submit "確認画面へ進む", class: "btn btn-success", style: "margin-left: 300px; padding: 2px 20px;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

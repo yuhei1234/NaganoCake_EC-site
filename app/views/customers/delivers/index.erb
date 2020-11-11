@@ -1,0 +1,49 @@
+<div style="margin-top: 50px; margin-left: 100px;">
+  <h4 style="width: 200px; text-align: center; background-color: #d5d5d5;">配送先登録/一覧</h4>
+</div>
+
+<div style="margin-top: 20px; margin-left:150px;">
+  <%= form_with model: @deliver, url: delivers_path, local: true do |f| %>
+    <div style="margin-bottom: 10px;">
+      <span style="margin-right: 50px;">郵便番号（ハイフンなし）</span>
+      <%= f.text_field :post_number %>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <span style="margin-right: 190px;">住所</span>
+      <%= f.text_field :address, style: "width: 400px;" %>
+    </div>
+    <div>
+      <span style="margin-right: 190px;">宛名</span>
+      <%= f.text_field :name %>
+      <%= f.submit "登録する", class: "btn btn-success", style: "margin-left: 300px; padding: 2px 20px;" %>
+    </div>
+  <% end %>
+</div>
+
+<div style="margin-top: 100px; margin-left: 50px;">
+  <table style="width: 50%; border-collapse: collapse; height: 40px;">
+    <tr>
+      <th style="width: 10%; border: 1px solid;">郵便番号</th>
+      <th style="width: 50%; border: 1px solid;">住所</th>
+      <th style="width: 15%; border: 1px solid;">宛名</th>
+      <th style="width: 25%; border: 1px solid;"></th>
+    </tr>
+    <% @delivers.each do |deliver| %>
+      <tr>
+        <td>
+          <%= deliver.post_number %>
+        </td>
+        <td>
+          <%= deliver.address %>
+        </td>
+        <td>
+          <%= deliver.name %>
+        </td>
+        <td>
+          <%= button_to "編集する", edit_deliver_path(deliver) %>
+          <%= button_to "削除する", deliver_path(deliver), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
