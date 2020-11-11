@@ -1,0 +1,38 @@
+<div style="margin-top: 50px; margin-left: 100px;">
+  <h4 style="width: 200px; text-align: center; background-color: #d5d5d5;">注文履歴一覧</h4>
+</div>
+
+<table>
+  <tr>
+    <th>注文日</th>
+    <th>配送先</th>
+    <th>注文商品</th>
+    <th>支払金額</th>
+    <th>ステータス</th>
+    <th>注文詳細</th>
+  </tr>
+  
+  <% @orders.each do |order| %>
+    <tr>
+      <td>
+        <%= order.create_at %> 
+      </td>
+      <td>
+        <%= order.post_number %>
+        <%= order.address %>
+      </td>
+      <td>
+        <%= order.id %>
+      </td>
+      <td>
+        <%= order.total_price %>
+      </td>
+      <td>
+        <%= order.progress_status %>
+      </td>
+      <td>
+        <%= button_to "表示する", order_path(order), class="btn btn-primary" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
