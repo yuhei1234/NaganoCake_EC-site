@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "customers/order_items#new"
+  root to: "customers#show"
   
   # managers
   devise_for :managers, controllers: {
@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   end
   
   devise_for :customers
+  
+
+  resources :customers
   
   # /customers
   
