@@ -16,7 +16,9 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "header";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 * {
   margin: 0;
@@ -30,14 +32,33 @@
 }
 
 .nav-header {
-  width: 90px;
-  font-size: 25px;
+  width: 150px;
+  font-size: 22px;
   margin-top: 20px;
   margin-left: 30px;
   text-align: center;
-  border: 1px solid;
+  border: 2px solid;
 }
 
 .navbar-right {
   margin-right: 50px;
 }
+
+
+
+// managers
+@import "managers/genres.scss";
+@import "managers/items/items_index.scss";
+@import "managers/items/items_new.scss";
+@import "managers/items/items_show.scss";
+@import "managers/items/items_edit.scss";
+
+// managers_scss_end
+
+
+
+// customers
+
+
+
+// sustomers_scss_end

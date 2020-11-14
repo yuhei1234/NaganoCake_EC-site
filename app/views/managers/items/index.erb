@@ -1,8 +1,15 @@
-<div style="margin-top: 50px; margin-left: 100px;">
-  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">商品一覧</h4>
+
+<!----css => app/assets/stylesheets/managers/items/items_index.scss>-->
+
+<h4 class="items-index">商品一覧</h4>
+
+<div class="items-new-button">
+  <%= link_to new_managers_item_path do %>
+    <i class="fas fa-plus-circle"></i>
+  <% end %>
 </div>
 
-<table class="table table-striped", style="margin-top: 50px; margin-left: 50px; width: 90%;">
+<table class="table table-striped tabele-items-index">
   <tr>
     <th>商品ID</th>
     <th>商品名</th>
@@ -18,27 +25,21 @@
           <%= item.name %>
         <% end %>
       </td>
-      <td><%= item.price %></td>
+      <td><%= (item.price).to_s(:delimited) %></td>
       <td>
-        <% if item.genre_id == 1 %>
-          <%= "ケーキ" %>
-        <% elsif item.genre_id == 2 %>
-          <%= "プリン" %>
-        <% elsif item.genre_id == 3 %>
-          <%= "焼き菓子" %>
-        <% elsif item.genre_id == 4 %>
-          <%= "キャンディ" %>
-        <% else %>
-          <%= "アイスクリーム" %>
-        <% end %>
+        <%= item.genre.name %>
       </td>
       <td>
         <% if item.is_active == true %>
           <%= "販売中" %>
         <% else %>
-          <%= "売り切れ" %>
+          <%= "販売停止中" %>
         <% end %>
       </td>
     </tr>
   <% end %>
 </table>
+
+<div class="items-paginate">
+  <%= paginate @items %>
+</div>

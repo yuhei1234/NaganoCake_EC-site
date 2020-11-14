@@ -1,13 +1,14 @@
 class Managers::GenresController < ApplicationController
+  def index
+    @genre = Genre.new
+    @genres = Genre.all.page(params[:page]).per(10)
+  end
+  
+  
   def create
     @genre = Genre.new(genre_params)
     @genre.save
     redirect_to managers_genres_path
-  end
-  
-  def index
-    @genre = Genre.new
-    @genres = Genre.all
   end
   
   def edit

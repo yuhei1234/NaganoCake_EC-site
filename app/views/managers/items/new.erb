@@ -1,41 +1,61 @@
-<div style="margin-top: 50px; margin-left: 100px;">
-  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">商品新規登録</h4>
-</div>
+
+<!----css => app/assets/stylesheets/managers/items/items_new.scss>-->
+
+  <h4 class="items-index">商品新規登録</h4>
 
 <%= form_with model: @item, url: managers_items_path, local: true do |f| %>
   <div class="container">
     <div class="row">
-      <div class="col-lg-4", style="margin-left: 0px;">
-        <div>
-          <%= attachment_image_tag @item, :image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg" %>
+      <div class="col-lg-4 item-image">
+        <div class="">
+          <%= attachment_image_tag @item, :image, size: "250x250", format: "jpeg", class: "profile-thumb", fallback: "no_image.jpg" %>
         </div>
-        <div style="margin-top: 5px;">
+        <div class="image-button">
           <%= f.attachment_field :image %>
         </div>
       </div>
   
-      <div class="col-lg-4">
-        <div>
-          <%= f.label "商品名" %><%= f.text_field :name %>
+      <div class="col-lg-6 item-form">
+        <div class="item">
+          <%= f.label "商品名" %>
+          <span class="item-new-name">
+            <%= f.text_field :name %>
+          </span>
+        </div>
+        <div class="item">
+          <%= f.label "商品説明" %>
+          <span class="item-new-introduction">
+            <%= f.text_area :introduction, :size => "40x10"%>
+          </span>
+        </div>
+        <div class="item">
+          <%= f.label "ジャンル" %>
+          <span class="item-new-genres">
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %>
+          </span>
+        </div>
+        <div class="item">
+          <%= f.label "税抜価格" %>
+          <span class="item-new-price">
+            <%= f.text_field :price %>
+            <%= "円" %>
+          </span>
         </div>
         <div>
-          <%= f.label "商品説明" %><%= f.text_area :introduction %>
-        </div>
-        <div>
-          <%= f.label "ジャンル" %><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "  --選択して下さい--  " %>
-        </div>
-        <div>
-          <%= f.label "税抜価格" %><%= f.text_field :price %><%= "円" %>
-        </div>
-        <div>
-          <%= f.label "販売ステータス" %><%= f.select :is_active, [["販売中", true], ["販売停止", false]] %>
+          <%= f.label "販売" %></br><%= f.label "ステータス" %>
+          <span class="item-new-status">
+            <%= f.select :is_active, [["販売中", true], ["販売停止中", false]] %>
+          </span>
         </div>
       </div>
   
-      <div class="col-lg-4">
-        <%= f.submit "新規登録", class: "btn btn-m btn-primary" %>
+      <div class="col-lg-2 item-submit">
+        <span class="submit-button">
+          <%= f.submit "新規登録", class: "btn btn-m btn-info", style: "posision: bottom;" %>
+        </span>
       </div>
     </div>
   </div>  
 <% end %>
+
 
