@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "customers#show"
+  root to: "managers#index"
   
   # managers
   devise_for :managers, controllers: {

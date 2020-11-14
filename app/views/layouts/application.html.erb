@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCakeEcSite</title>
+    <title>ながのCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
 <!----css => app/assets/stylesheets/application.scss>-->
-  <nav class="header-navigation">
-    <div class="nav-header">LOGO</div>
-    <ul class="nav navbar-right">
-      <% if manager_signed_in? %>
-        <li class="", style="display: inline-block;">
-          <%= link_to "商品一覧", managers_path %>
-        </li>
-        <li class="", style="display: inline-block;">
-          <%= link_to "会員一覧", managers_path %>
-        </li>
-        <li class="", style="display: inline-block;">
-          <%= link_to "注文履歴一覧", managers_path %>
-        </li>
-        <li class="", style="display: inline-block;">
-          <%= link_to "ジャンル一覧", managers_path %>
-        </li>
-        <li class="", style="display: inline-block;">
-          <%= link_to "ログアウト", destroy_manager_session_path, method: :delete %>
-          
-        </li>
-      <% else %>
-        <li class="", style="display: inline-block;">
-          <%= link_to "About", "/customers/about" %>
-        </li>
-        <li class="", style="display: inline-block;">
-          <%= link_to "商品一覧", managers_items_path %>
-        </li>
-        <li class="", style="display: inline-block;">
-          <%= link_to "新規登録", new_customer_registration_path %>
-        </li>
-        <li class="", style="display: inline-block;">
-          <%= link_to "ログイン", new_customer_session_path %>
-        </li>
-      <% end %>
-    </ul>
-  </nav>
 
   <body>
+    <div class="header">
+      <nav class="header-navigation">
+        <div class="nav-header">LOGO</div>
+        <div class="slide-menu">
+          <ul class="nav navbar-right">
+            <% if manager_signed_in? %>
+              <li class="", style="display: inline-block;">
+                <%= link_to "商品一覧", managers_items_path %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "会員一覧", managers_customers_path %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "注文履歴一覧", managers_orders_path %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "ジャンル一覧", managers_genres_path %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "ログアウト", destroy_manager_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li class="", style="display: inline-block;">
+                <%= link_to "About", "/customers/about" %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "商品一覧", new_manager_session_path %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "新規登録", new_manager_registration_path %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "ログイン", new_manager_session_path %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    
     <%= yield %>
+    
+    
   </body>
+  
 </html>
