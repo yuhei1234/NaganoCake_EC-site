@@ -3,7 +3,7 @@
 </div>
 
 <div style="margin-top: 50px; margin-left: 70px;">
-  <%= form_with model: @customer, url: new_customer_registration_path, local: true do |f| %>
+  <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
     <%= render "customers/shared/error_messages", resource: resource %>
 
     <div class="field", style="margin-bottom: 10px;">
@@ -25,6 +25,11 @@
     <div class="field", style="margin-bottom: 10px;">
       <span style="margin-right: 100px;">メールアドレス</span>
       <%= f.email_field :email, autocomplete: "email", style: "margin-left: 19px;" %>
+    </div>
+  
+    <div class="field", style="margin-bottom: 10px;">
+      <span>郵便番号</span><span style="font-size: 12px;">（ハイフンなし）</span>
+      <%= f.text_field :post_number, autocomplete: "post_number", style: "margin-left: 64px;" %>
     </div>
   
     <div class="field", style="margin-bottom: 10px;">

@@ -5,8 +5,9 @@ class Customers::DeliversController < ApplicationController
   end
   
   def create
-    deliver = Deliver.new(deliver_params)
-    deliver.save
+    @deliver = Deliver.new(deliver_params)
+    @deliver.customer_id = current_customer.id
+    @deliver.save
     redirect_to delivers_path
   end
   
@@ -15,13 +16,13 @@ class Customers::DeliversController < ApplicationController
   end
   
   def update
-    deliver = Deliver.find(params[:id])
-    deliver.update(deliver_params)
+    @deliver = Deliver.find(params[:id])
+    @deliver.update(deliver_params)
     redirect_to delivers_path
   end
   
   private
   def deliver_params
-    params.require(:deliver).permit(:post_number, :address, :name)
+    params.require(:deliver).permit(:name, :post_number, :address)
   end
 end

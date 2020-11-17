@@ -1,0 +1,39 @@
+// Place all the styles related to the Genres controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.customers-genres-bar {
+  border: 2px solid;
+  margin-top: 100px;
+  margin-left: 20px;
+}
+
+.customers-genres-bar-index {
+  font-size: 20px;
+  padding: 3px 60px;
+  background-color: #fff4a5;
+  border-bottom: 2px solid;
+}
+
+.customers-genres-bar-name {
+  font-size: 20px;
+  padding-left: 5px;
+  padding-bottom: 20px;
+}
+
+.top-message {
+  width: 500px;
+  margin-top: 50px;
+  margin-left: 30px;
+  padding: 30px 40px;
+  border: 1px solid;
+}
+
+.top-message-title {
+  margin: 0 auto;
+}
+
+.top-recommend-items {
+  margin-left: 30px;
+}

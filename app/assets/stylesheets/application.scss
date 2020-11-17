@@ -58,7 +58,19 @@
 
 
 // customers
+@import "customers/customer/top.scss";
+@import "customers/customer/about.scss";
+@import "customers/customer/show.scss";
+@import "customers/customer/edit.scss";
+@import "customers/customer/confilm.scss";
+
+@import "customers/items/index.scss";
+@import "customers/items/show.scss";
+
+@import "customers/delivers/index.scss";
+@import "customers/delivers/edit.scss";
+
+@import "customers/orders/index.scss";
 
 
-
-// sustomers_scss_end
+// customers_scss_end

@@ -1,0 +1,55 @@
+// Place all the styles related to the customers/Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.customer-index {
+  width: 200px;
+  margin-top: 50px;
+  margin-left: 100px;
+  text-align: center;
+  background-color: #d5d5d5;
+}
+
+.customer-orders-table {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+}
+
+.customer-orders-table-index {
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.customer-orders-table-tag {
+  height: 40px;
+}
+
+.customer-orders-table-order-tag {
+  width: 15%;
+}
+
+.customer-orders-table-deliver-tag {
+  width: 40%;
+}
+
+.customer-orders-table-item-tag{
+  width: 15%;
+}
+
+.customer-orders-table-payment-tag {
+  width: 10%;
+}
+
+.customer-orders-table-status-tag {
+  width: 10%;
+}
+
+.customer-orders-table-button-tag {
+  width: 10%;
+}
+
+.customer-orders-table-item {
+  border: 1px solid;
+}

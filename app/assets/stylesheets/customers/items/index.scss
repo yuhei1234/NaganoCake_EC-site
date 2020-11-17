@@ -1,0 +1,39 @@
+// Place all the styles related to the Genres controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.items-genres-table {
+  border: 2px solid;
+  margin-top: 100px;
+  margin-left: 20px;
+}
+
+.items-genres-table-index {
+  font-size: 20px;
+  padding: 3px 60px;
+  background-color: #fff4a5;
+  border-bottom: 2px solid;
+}
+
+.items-genres-table-content {
+  font-size: 20px;
+  padding-left: 5px;
+  padding-bottom: 20px;
+}
+
+.items-index-contents {
+  display: flex;
+  justify-contents: center;
+  flex-wrap: wrap;
+}
+
+.items-index-content {
+  width: 150px;
+  margin-right: 50px;
+}
+
+.customer-item-paginate {
+  width: 300px;
+  margin: 0 auto;
+}

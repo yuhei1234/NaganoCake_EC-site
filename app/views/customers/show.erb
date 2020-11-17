@@ -1,0 +1,62 @@
+
+<!----css => app/assets/stylesheets/customers/customer/show.scss>-->
+
+<h4 class="customer-index">マイページ</h4>
+
+<div class="customer-info-tag customer-info-edit">
+  <h4 class="customer-info">登録情報</h4>
+  <div class="customer-edit">
+    <%= button_to "編集する", edit_customers_path, method: :get, class: "btn btn-primary" %>
+  </div>
+  <div class="customer-pass">
+    <%= button_to "パスワードを変更する", edit_customer_password_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<table border="1", class="customer-info-table">
+  <tr class="">
+    <th class="customer-info-table-title">氏名</th>
+    <td class="customer-info-table-data">
+      <span class="customer-last_name"><%= @customer.last_name %></span>
+      <span><%= @customer.first_name %></span>
+    </td>
+  </tr>
+  <tr>
+    <th class="customer-info-table-title">カナ</th>
+    <td class="customer-info-table-data">
+      <span class="customer-first_name"><%= @customer.last_name_kana %></span>
+      <span><%= @customer.first_name_kana %></span>
+    </td>
+  </tr>
+  <tr>
+    <th class="customer-info-table-title">郵便番号</th>
+    <td class="customer-info-table-data"><%= @customer.post_number %></td>
+  </tr>
+  <tr>
+    <th class="customer-info-table-title">住所</th>
+    <td class="customer-info-table-data"><%= @customer.address %></td>
+  </tr>
+  <tr>
+    <th class="customer-info-table-title">電話番号</th>
+    <td class="customer-info-table-data"><%= @customer.phone_number %></td>
+  </tr>
+  <tr>
+    <th class="customer-info-table-title">メールアドレス</th>
+    <td class="customer-info-table-data"><%= @customer.email %></td>
+  </tr>
+</table>
+
+<div class="customer-info-tag customer-info-deliver">
+  <h4 class="customer-info">配送先</h4>
+  <div class="customer-deliver-button">
+    <%= button_to "一覧を見る", delivers_path(@customer), method: :get, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="customer-info-tag customer-info-order">
+  <h4 class="customer-info">注文履歴</h4>
+  <div class="customer-order-button">
+    <%= button_to "一覧を見る", orders_path(@customer), method: :get, class: "btn btn-primary"%>
+  </div>
+</div>
+

@@ -1,0 +1,36 @@
+// Place all the styles related to the Genres controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+.customer-confilm {
+  width: 500px;
+  margin: 100px  auto 0 auto ;
+}
+
+.customer-confilm-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.customer-confilm-introduction {
+  margin-top: 30px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.customer-confilm-button {
+  width: 220px;
+  margin: 50px auto 0 auto;
+}
+
+.customer-confilm-button-active {
+  display: inline-block;
+}
+
+.customer-confilm-button-hide {
+  margin-left: 30px;
+  display: inline-block;
+}
