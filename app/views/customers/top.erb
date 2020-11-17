@@ -1,12 +1,15 @@
+
+<!----css => app/assets/stylesheets/customers/customer/top.scss>-->
+
 <div class="col-lg-3">
-  <table style="border: 2px solid; margin-top: 100px;margin-left: 20px;">
+  <table class="customers-genres-bar">
     <tr>
-      <th style="font-size: 20px; padding: 3px 60px; background-color: #fff4a5; border-bottom: 2px solid;">ジャンル検索</th>
+      <th class="customers-genres-bar-index">ジャンル検索</th>
     </tr>
     <% @genres.each do |genre| %>
       <% if genre.is_active == true %>
         <tr>
-          <td style="font-size: 20px; padding-left: 5px; padding-bottom: 20px;"><%= genre.name %></td>
+          <td class="customers-genres-bar-name"><%= genre.name %></td>
         </tr>
       <% end %>
     <% end %>
@@ -14,8 +17,8 @@
 </div>
 
 <div class="col-lg-9">
-  <div class="top-message" style="width: 500px; margin-top: 50px; margin-left: 30px; padding: 30px 40px; border: 1px solid;">
-    <h4 style="margin: 0 auto;">
+  <div class="top-message">
+    <h4 class="top-message-title">
       ようこそ、NaganoCakeへ!</br>
       このサイトは、ケーキ販売のECサイトになります。</br>
       会員でない方も商品の閲覧はできますが、</br>
@@ -23,7 +26,7 @@
     </h4>
   </div>
   <div>
-    <h3 style="margin-left: 30px;">オススメ商品</h3>
+    <h3 class="top-recommend-items">オススメ商品</h3>
     <div>sss</div>
     <div><%= link_to "もっと見る>", "/top" %></div>
   </div>

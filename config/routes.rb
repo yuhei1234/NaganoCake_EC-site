@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "managers#index"
+  root to: "customers#top"
   
   # managers
   devise_for :managers, controllers: {
@@ -27,12 +27,19 @@ Rails.application.routes.draw do
     resources :orders
     resources :delivers
     resources :order_items
+    resources :cart_items
   end
+  
+  scope :customers do
+    resource :customers, only: [:show, :edit, :update]
+  end
+  get "/customers/confilm" => "customers#confilm", as: "customers_confilm"
+  put "/customers/confilm" => "customers#hide", as: "customers_hide"
   
   devise_for :customers
   
-
-  resources :customers
+  
+  
   
   # /customers
   

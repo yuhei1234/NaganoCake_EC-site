@@ -1,12 +1,12 @@
 <div class="col-lg-3">
-  <table style="border: 2px solid; margin-top: 100px;margin-left: 20px;">
+  <table class="items-genres-table">
     <tr>
-      <th style="font-size: 20px; padding: 3px 60px; background-color: #fff4a5; border-bottom: 2px solid;">ジャンル検索</th>
+      <th class="items-genres-table-index">ジャンル検索</th>
     </tr>
     <% @genres.each do |genre| %>
       <% if genre.is_active == true %>
         <tr>
-          <td style="font-size: 20px; padding-left: 5px; padding-bottom: 20px;"><%= genre.name %></td>
+          <td class="items-genres-table-content"><%= genre.name %></td>
         </tr>
       <% end %>
     <% end %>
@@ -19,9 +19,9 @@
   </h2>
   
   <div>
-    <div style="display: flex; justify-contents: center;">
+    <div class="items-index-contents">
       <% @items.each do |item| %>
-        <div style="margin-right: 50px;">
+        <div class="items-index-content">
           <div>
             <%= attachment_image_tag item, :image, :fill, 100, 100, class: "profile-thumb", fallback: "no_image.jpg" %>
           </div>
@@ -31,10 +31,13 @@
             <%end %>
           </p>
           <p>
-            <%= item.price %>
+            <%= (item.price).to_s(:delimited) %>
           </p>
         </div>
       <% end %>
+    </div>
+    <div class="customer-item-paginate">
+      <%= paginate @items %>
     </div>
   </div>
   
