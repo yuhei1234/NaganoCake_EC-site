@@ -31,10 +31,10 @@
     </div>
   </div>
   <div class="">
-    <%= form_with model: @order_item, url: order_items_path, local: true do |f| %> 
-      <% f.text_field :price, default: @item.price %>
+    <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %> 
       <div class="items-show-order">
         <div class="items-show-amount">
+          <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.select :amount, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], include_blank: '--個数選択--' %>
         </div>
         <div class="items-show-cart-button">

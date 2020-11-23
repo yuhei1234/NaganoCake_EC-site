@@ -1,12 +1,19 @@
 class Customers::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
-    @cart_item = CartItem.find(params[:id])
+    @order = Order.new
+  end
+  
+  def create
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    @cart_item.save
+    redirect_to cart_items_path
   end
   
   def update
-    cart_item = CartItem.find(params[:id])
-    cart_item.update(params_cart_item)
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
     redirect_to customers_cart_items_path
   end
   
@@ -19,7 +26,8 @@ class Customers::CartItemsController < ApplicationController
   end
   
   private
-  def params_cart_item
-    params.require(:cart_item).permit(:amount)
+  def cart_item_params
+    params.require(:cart_item).permit(:amount, :item_id)
   end
+  
 end

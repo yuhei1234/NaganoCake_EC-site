@@ -70,7 +70,9 @@
 @import "customers/delivers/index.scss";
 @import "customers/delivers/edit.scss";
 
-@import "customers/orders/index.scss";
+@import "customers/cart_items.scss";
 
+@import "customers/orders/index.scss";
+@import "customers/orders/new.scss";
 
 // customers_scss_end

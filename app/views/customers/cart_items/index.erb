@@ -1,60 +1,73 @@
-<div style="margin-top: 50px; margin-left: 100px;">
-  <h4 style="width: 300px; text-align: center; background-color: #d5d5d5; margin-top: 150px; margin-left: 100px;">ショッピングカート</h4>
+
+<!----css => app/assets/stylesheets/customers/cart_items.scss>-->
+
+<h4 class="customer-index">ショッピングカート</h4>
   <div>
-    <%= button_to "削除する", cart_item_path(@cart_items), method: :delete %>
+    <%= link_to "カートを空にする", cart_item_path(@cart_items), method: :delete, class: "btn btn-sm btn-danger cart-all-delete-button" %>
   </div>
 </div>
 
-<table>
-  <tr>
-    <th>商品名</th>
-    <th>単価（税込）</th>
-    <tr>数量</tr>
-    <tr>小計</tr>
-    <tr></tr>
+<table class="cart-table-index">
+  <tr class="cart-table-index-tag">
+    <th class="cart-table-index-name">商品名</th>
+    <th class="cart-table-index-price">単価（税込）</th>
+    <th class="cart-table-index-amount">数量</th>
+    <th class="cart-table-index-total-price">小計</th>
+    <th class="cart-table-index-delete"></th>
   </tr>
   
   <% @cart_items.each do |cart_item| %>
-    <tr>
-      <td>
-        <%= attachment_image_tag cart_item, :image, :fill, 20px, 20px, fallback: "no_image.jpg" %>
-        <%= @item(cart_item.item_id).name %>
+    <tr class="cart-table-item-tag">
+      <td class="cart-table-item cart-table-item-name">
+        <span class="cart-item-image">
+          <%= attachment_image_tag cart_item.item, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
+        </span>
+        <span class="">
+          <%= cart_item.item.name %>
+        </span>
       </td>
-      <td>
-        <%= @item(cart_item.item_id).price * 1.10).round %>
+      <td class="cart-table-item">
+        <%= (cart_item.item.price * 1.10).round %>
       </td>
-      <td>
+      <td class="cart-table-item cart-table-item-amount">
         <%= form_with model: @cart_item, local: true do |f| %>
-          <%= f.text_field :amount %>
-          <%= f.submit "変更", class: "btn btn-primary" %>
+          <span>
+            <%= f.text_field :amount, style: "width: 30px;" %>
+          </span>
+          <span>
+            <%= f.submit "変更", class: "btn btn-xs btn-primary" %>
+          </span>
         <% end %>
       </td>
-      <td>
-        <%= @item(cart_item.item_id).price * cart_item.amount %>
+      <td class="cart-table-item">
+        <%= cart_item.item.price * cart_item.amount %>
       </td>
-      <td>
-        <%= button_to "削除する", cart_item_path(cart_item), method: :delete %>
+      <td class="cart-table-item cart-table-item-delete">
+        <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger" %>
       </td>
     </tr>
   <% end %>
 </table>
 
-<div>
-  <div>
-    <%= button_to "買い物を続ける", customers_items_path, class: "btn btn-m btn-primary" %>
+<div class="cart-continue-price">
+  <div class="cart-buy-continue">
+    <%= link_to "買い物を続ける", items_path, class: "btn btn-m btn-primary" %>
   </div>
   <div>
-    <table>
+    <table class="cart-table-total-price">
       <tr>
-        <th>合計金額</th>
-        <td>
-          aaa
+        <th class="cart-table-total-price-index">合計金額</th>
+        <td class="cart-table-total-price-tag">
+          <% @sum = 0 %>
+          <% @cart_items.each do |cart_item| %>
+            <%= @sum += (cart_item.item.price * cart_item.amount) %>
+          <% end %>
         </td>
       </tr>
     </table>
   </div>
 </div>
 
-<div>
-  <%= button_to "情報入力に進む", "#", class: "btn btn-m btn-succsess" %>
+<div class="cart-order-bottun">
+  <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success", style: "padding: 15px 50px;" %>
 </div>

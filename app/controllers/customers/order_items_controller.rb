@@ -2,6 +2,7 @@ class Customers::OrderItemsController < ApplicationController
   def new
     @orders = Order.all
     @delivers = Deliver.all
+    @order_item = OrderItem.new
   end
   
   def create
@@ -9,11 +10,7 @@ class Customers::OrderItemsController < ApplicationController
     redirect_to new_order_item_path
   end
   
-  def confilm
-  end
-  
-  def thanks
-  end
+
   
   private
   def order_item_params

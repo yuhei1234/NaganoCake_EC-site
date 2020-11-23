@@ -1,0 +1,95 @@
+
+<!----css => app/assets/stylesheets/customers/order_items/new.scss>-->
+
+<h4 class="customer-index">注文情報入力</h4>
+
+<div class="order-item-deliver-info">
+  <div class="payment_method">
+    <h4 class="order-items-index">支払方法</h4>
+    <div>
+      <%= form_with model: @order, local: true do |f| %>
+        <% @sum = 0 %>
+        <% @cart_items.each do |cart_item| %>
+          <% @sum += (cart_item.item.price * cart_item.amount) %>
+        <% end %>
+        <%= f.hidden_field :total_price, :value => (@sum + @order.shipping_cost) %>
+      
+        <div class="order-items-select payment-method-select">
+          <p>
+            <%= f.radio_button :payment_method, 0, checked: true %>
+            <%= f.label :payment_method, "クレジットカード" %>
+          </p>
+          <p>
+            <%= f.radio_button :payment_method, 1 %>
+            <%= f.label :payment_method, "銀行振込" %>
+          </p>
+        </div>
+
+        <div class="order-items-deliver_info">
+          <h4 class="order-items-index">お届け先</h4>
+          <div class="order-items-select">
+            <div>
+              <div>
+                <%= f.radio_button :address, :string, checked: true %>
+                <%= f.label :address, "ご自身の住所" %>
+              </div>
+              <p class="order-items-address">
+                <%= current_customer.post_number %>
+                <%= current_customer.address %>
+              </p>
+              <p class="order-items-address">
+                <span><%= current_customer.last_name %></span>
+                <span><%= current_customer.first_name %></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      
+
+        <div class="order-items-select">
+          <%= f.radio_button :address, :string %>
+          <%= f.label :address, "登録済住所から選択" %>
+          <p class="order-items-address">
+            <%= form_with model: @deliver, local: true do |deliver| %>
+              <%= deliver.collection_select :customer_id, Deliver.all, :id, :address, include_blank: "--配送先を選択してください--" %>
+            <% end %>
+          </p>
+        </div>
+
+    　   <div>
+    　     <div class="order-items-select">
+            <%= f.radio_button :address, :string %>
+            <%= f.label :address, "新しいお届け先" %>
+          </div>
+          <div class="order-items-address">
+            <div style="margin-bottom: 10px;">
+              <span style="margin-right: 50px;">郵便番号（ハイフンなし）</span>
+              <%= f.text_field :post_number %>
+            </div>
+            <div style="margin-bottom: 10px;">
+              <span style="margin-right: 190px;">住所</span>
+              <%= f.text_field :address, style: "width: 400px;" %>
+            </div>
+            <div>
+              <span style="margin-right: 190px;">宛名</span>
+              <%= f.text_field :name %>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <% if @order.address == current_customer.address %>
+            <%= f.hidden_field :post_number, :value => current_customer.post_number %>
+            <%= f.hidden_field :address, :value => current_customer.address %>
+            <%= f.hidden_field :name, :value => (current_customer.last_name + current_customer.first_name) %>
+          <% else %>
+          
+          <% end %>
+        </div>
+        <div class="order-items-confirm-button">
+          <%= f.submit "確認画面へ進む", class: "btn btn-lg btn-primary", style: "margin-left: 300px; padding: 2px 20px;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>  
