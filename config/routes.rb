@@ -19,25 +19,24 @@ Rails.application.routes.draw do
   
   # customers
   get "/customers/about" => "customers#about"
-  get "/customers/order_item/confilm" => "customers/order_items#confilm"
-  get "/customers/order_item/thanks" => "customers/order_items#thanks"
   
   scope module: :customers do
     resources :items, only: [:index, :show]
-    resources :orders
+    
+    resources :orders do
+      collection do
+        post :confirm
+        get :thanks
+      end
+    end
     resources :delivers
     resources :order_items
     resources :cart_items
-    resources :carts, only: [:show]
-    post '/add_item' => 'carts#add_item'
-    post '/update_item' => 'carts#update_item'
-    delete '/delete_item' => 'carts#delete_item'
   end
   
   scope :customers do
     resource :customers, only: [:show, :edit, :update]
   end
-  get "/customers/confirm" => "customers#confirm", as: "customers_confirm"
   put "/customers/confirm" => "customers#hide", as: "customers_hide"
   
   devise_for :customers

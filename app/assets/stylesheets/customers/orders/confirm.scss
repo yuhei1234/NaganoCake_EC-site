@@ -1,0 +1,98 @@
+// Place all the styles related to the customers/OrderItems controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.order-cart-table-index {
+  width: 70%;
+  margin: 20px auto 0 auto;
+}
+
+.order-cart-table-index-tag {
+  height: 40px;
+}
+
+.order-cart-table-index-name {
+  width: 40%;
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.order-cart-table-index-price {
+  width: 20%;
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.order-cart-table-index-amount {
+  width: 20%;
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.order-cart-table-index-total-price {
+  width: 20%;
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.cart-table-item-tag {
+  height: 20px;
+}
+
+.cart-table-item {
+  height: 40px;
+  border: 1px solid;
+}
+
+.cart-item-image {
+  margin-right: 10px;
+}
+
+.cart-table-item-name {
+  text-valign: center;
+}
+
+.cart-table-item-amount {
+  text-align: center;
+}
+
+.order-table-index {
+  border-collapse: collapse;
+  height: 40px;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.order-table-item-tag {
+  height: 40px;
+  background-color: #e5e8f9;
+}
+
+.order-table-item {
+  width: 50%;
+  border: 1px solid;
+}
+
+.order-option {
+  margin-top: 30px;
+  margin-left: 150px;
+}
+
+.order-option-tag {
+  margin-right: 30px;
+  display: inline-block;
+}
+
+.order-option-item {
+  display: inline-block;
+}
+
+.order-option-address {
+  padding-top: 30px;
+}
+
+.order-confirm-button {
+  width: 120px;
+  margin: 50px auto 20px auto;
+}

@@ -14,7 +14,7 @@ class Customers::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    redirect_to customers_cart_items_path
+    redirect_to cart_items_path
   end
   
   def destroy
@@ -22,12 +22,12 @@ class Customers::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_items.destroy
     @cart_item.destroy
-    redirect_to customers_cart_items_path
+    redirect_to cart_items_path
   end
   
   private
   def cart_item_params
-    params.require(:cart_item).permit(:amount, :item_id)
+    params.require(:cart_item).permit(:amount)
   end
   
 end
