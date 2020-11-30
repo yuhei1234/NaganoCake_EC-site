@@ -75,6 +75,11 @@
   </div>
 </div>
 
-<div class="order-confirm-button">
-  <%= link_to "購入を確定する", orders_path, method: :post, class: "btn btn-lg btn-success" %>
-</div>
+<%= form_with model: @order, local: true do |f| %>
+  <%= f.hidden_field :post_number, :value => @order.post_number %>
+  <%= f.hidden_field :address,     :value => @order.address %>
+  <%= f.hidden_field :name,        :value => @order.name %>
+  <%= f.hidden_field :total_price, :value => ((@order.total_price).to_i + (@order.shipping_cost).to_i) %>
+  <%= f.submit "購入を確定する", class: "btn btn-lg btn-success order-confirm-button" %>
+<% end %>
+
