@@ -1,9 +1,10 @@
 
 <!----css => app/assets/stylesheets/customers/cart_items.scss>-->
+<!----helpers => app/helpers/application_helper.rb>-->
 
 <h4 class="customer-index">ショッピングカート</h4>
   <div>
-    <%= link_to "カートを空にする", cart_item_path(@cart_items), method: :delete, class: "btn btn-sm btn-danger cart-all-delete-button" %>
+    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-sm btn-danger cart-all-delete-button" %>
   </div>
 </div>
 
@@ -27,7 +28,7 @@
         </span>
       </td>
       <td class="cart-table-item">
-        <%= (cart_item.item.price * 1.10).round %>
+        <%= tax(cart_item.item.price) %>
       </td>
       <td class="cart-table-item cart-table-item-amount">
         <%= form_with model: cart_item, local: true do |f| %>
@@ -40,7 +41,7 @@
         <% end %>
       </td>
       <td class="cart-table-item">
-        <%= (cart_item.item.price * 1.10 * cart_item.amount).round %>
+        <%= sum_total_price(cart_item.item.price, cart_item.amount) %>
       </td>
       <td class="cart-table-item cart-table-item-delete">
         <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger" %>
@@ -58,10 +59,11 @@
       <tr>
         <th class="cart-table-total-price-index">合計金額</th>
         <td class="cart-table-total-price-tag">
-          <% @sum = 0 %>
+          <% @sum_cart_total_price = 0 %>
           <% @cart_items.each do |cart_item| %>
-            <%= @sum += (cart_item.item.price * cart_item.amount) %>
+            <% @sum_cart_total_price += sum_total_price(cart_item.item.price, cart_item.amount) %>
           <% end %>
+          <%= @sum_cart_total_price %>
         </td>
       </tr>
     </table>

@@ -1,5 +1,6 @@
 
 <!----css => app/assets/stylesheets/customers/order_items/new.scss>-->
+<!----helpers => app/helpers/application_helper.rb>-->
 
 <h4 class="customer-index">注文情報入力</h4>
 
@@ -10,7 +11,7 @@
       <%= form_with model: @order, url: confirm_orders_path(@order), local: true do |f| %>
         <% @sum = 0 %>
         <% @cart_items.each do |cart_item| %>
-          <% @sum += (cart_item.item.price * 1.10 * cart_item.amount).round %>
+          <% @sum += sum_total_price(cart_item.item.price, cart_item.amount) %>
         <% end %>
         <%= f.hidden_field :total_price, :value => (@sum + @order.shipping_cost) %>
       

@@ -1,6 +1,7 @@
 class Customers::OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = Order.all.page(params[:page]).per(10)
+    @order_items = OrderItem.all
   end
   
   def new
@@ -43,22 +44,26 @@ class Customers::OrdersController < ApplicationController
     @order.save
     if @order.save
       @cart_items = CartItem.all
-      @order_item = OrderItem.new
-      @order_item.order_id = @order.id
       @cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
         @order_item.item_id = cart_item.item.id
         @order_item.price = cart_item.item.price
         @order_item.amount = cart_item.amount
+        @order_item.save
         cart_item.destroy
       end
-      @order_item.making_status = 0
-      @order_item.save
     end
     
     redirect_to thanks_orders_path
   end
   
   def thanks
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.all
   end
   
   

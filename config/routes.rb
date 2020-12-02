@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     end
     resources :delivers
     resources :order_items
-    resources :cart_items
+    resources :cart_items do
+      collection do
+        delete :destroy_all
+      end
+    end
   end
   
   scope :customers do

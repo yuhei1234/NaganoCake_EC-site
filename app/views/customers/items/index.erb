@@ -21,22 +21,24 @@
   <div>
     <div class="items-index-contents">
       <% @items.each do |item| %>
-        <div class="items-index-content">
-          <div>
-            <%= attachment_image_tag item, :image, :fill, 100, 100, class: "profile-thumb", fallback: "no_image.jpg" %>
+        <% if item.genre.is_active == true %>
+          <div class="items-index-content">
+            <div>
+              <%= attachment_image_tag item, :image, :fill, 100, 100, class: "profile-thumb", fallback: "no_image.jpg" %>
+            </div>
+            <p>
+              <%= link_to item_path(item) do %>
+                <%= item.name %>
+              <%end %>
+            </p>
+            <p>
+              <%= (item.price).to_s(:delimited) %>
+            </p>
           </div>
-          <p>
-            <%= link_to item_path(item) do %>
-              <%= item.name %>
-            <%end %>
-          </p>
-          <p>
-            <%= (item.price).to_s(:delimited) %>
-          </p>
-        </div>
+        <% end %>
       <% end %>
     </div>
-    <div class="customer-item-paginate">
+    <div class="paginate">
       <%= paginate @items %>
     </div>
   </div>
