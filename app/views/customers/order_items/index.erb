@@ -28,10 +28,8 @@
       
       <td class="customer-orders-table-item">
         <% @order_items.each do |order_item| %>
-          <% if order.id == order_item.order_id %>
-            <%= order_item.item.name %></br>
-          <% end %>
-        <% end %>
+          <%= order_item.item.name %>
+        <% end %>  
       </td>
       <td class="customer-orders-table-item">
         <%= order.total_price %>
@@ -40,12 +38,12 @@
         <%= order.progress_status %>
       </td>
       <td class="customer-orders-table-item">
-        <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>
+        <%= link_to "表示する", order_item_path(order.id), class: "btn btn-primary" %>
       </td>
     </tr>
   <% end %>
 </table>
 
 <div class="paginate">
-  <%= paginate @orders %>
+  <%= paginate @order_items %>
 </div>

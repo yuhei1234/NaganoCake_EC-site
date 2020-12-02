@@ -37,7 +37,7 @@
       <table class="order-item-table">
         <tr>
           <th class="order-item-table-index">商品合計</th>
-          <td class="order-item-table-item"><%= @order.total_price - @order.shipping_cost %></td>
+          <td class="order-item-table-item"><%= @order.total_price %></td>
         </tr>
         <tr>
           <th class="order-item-table-index">配送料</th>
@@ -45,7 +45,7 @@
         </tr>
         <tr>
           <th class="order-item-table-index order-item-total-price-index">ご請求額</th>
-          <td class="order-item-table-item"><%= @order.total_price %></td>
+          <td class="order-item-table-item"><%= (@order.total_price + @order.shipping_cost) %></td>
         </tr>
       </table>
     </div>

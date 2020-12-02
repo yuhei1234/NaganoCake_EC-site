@@ -1,0 +1,30 @@
+// Place all the styles related to the customers/CartItems controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.order-item-table {
+  width: 80%;
+}
+
+.order-item-table-index {
+  line-height: 40px;
+  background-color: #e5e8f9;
+  border: 1px solid;
+}
+
+.order-item-total-price-index {
+  font-weight: bold;
+}
+
+.order-item-table-item {
+  border: 1px solid;
+}
+
+.order-detail {
+  margin-top: 50px;
+}
+
+.order-item-detail-table {
+  width: 80%;
+}

@@ -44,6 +44,10 @@
   margin-right: 50px;
 }
 
+.paginate {
+  width: 300px;
+  margin: 0 auto;
+}
 
 
 // managers
@@ -70,7 +74,13 @@
 @import "customers/delivers/index.scss";
 @import "customers/delivers/edit.scss";
 
-@import "customers/orders/index.scss";
+@import "customers/cart_items.scss";
 
+@import "customers/orders/index.scss";
+@import "customers/orders/new.scss";
+@import "customers/orders/confirm.scss";
+@import "customers/orders/thanks.scss";
+
+@import "customers/order_items/show.scss";
 
 // customers_scss_end

@@ -1,22 +1,13 @@
 class Customers::OrderItemsController < ApplicationController
-  def new
+  def index
     @orders = Order.all
-    @delivers = Deliver.all
+    @order_items = OrderItem.all.page(params[:page]).per(10)
   end
   
-  def create
-    @order_item = OrderItem.new(order_item_params)
-    redirect_to new_order_item_path
+  def show
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.all
+    @order_items = OrderItem.find(params[:id])
   end
   
-  def confilm
-  end
-  
-  def thanks
-  end
-  
-  private
-  def order_item_params
-    params.permit(:order_id, :item_id, :price, :amount, :making_status)
-  end
 end
