@@ -1,0 +1,26 @@
+// Place all the styles related to the Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.managers-show-index {
+  margin-top: 50px;
+  margin-left: 100px;
+  width: 220px;
+  text-align: center;
+  background-color: #d5d5d5;
+}
+
+.managers-customer-detail {
+  margin-bottom: 20px;
+}
+
+.managers-customer-detail:nth-child(7) {
+  margin-bottom: 50px;
+}
+
+.managers-customer-edit-button {
+  margin-right: 20px;
+}
+
+

@@ -51,7 +51,17 @@
 
 
 // managers
+@import "managers/index.scss";
+
+@import "managers/customers/index.scss";
+@import "managers/customers/show.scss";
+@import "managers/customers/edit.scss";
+
+@import "managers/orders/index.scss";
+@import "managers/orders/show.scss";
+
 @import "managers/genres.scss";
+
 @import "managers/items/items_index.scss";
 @import "managers/items/items_new.scss";
 @import "managers/items/items_show.scss";
