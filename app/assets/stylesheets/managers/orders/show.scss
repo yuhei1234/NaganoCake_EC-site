@@ -1,0 +1,27 @@
+// Place all the styles related to the Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.managers-orders-show {
+  margin-bottom: 20px;
+}
+
+.managers-orders-show-table {
+  width: 80%;
+  margin-top: 50px;
+  position: absolute;
+}
+
+.managers-orders-show-price {
+  margin-top: 50px;
+}
+
+.managers-orders-show-price-detail {
+  margin-bottom: 5px;
+}
+
+.managers-orders-show-total-price {
+  font-weight: bold;
+}

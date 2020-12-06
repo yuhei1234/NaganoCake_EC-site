@@ -41,7 +41,8 @@ Rails.application.routes.draw do
   scope :customers do
     resource :customers, only: [:show, :edit, :update]
   end
-  put "/customers/confirm" => "customers#hide", as: "customers_hide"
+  get "/customers/confirm" => "customers#confirm", as: "customers_confirm"
+  put "/customers/hide" => "customers#hide", as: "customers_hide"
   
   devise_for :customers
   

@@ -3,6 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.genres-table {
+  width: 70%;
+  margin: 50px auto 20px auto;
+}
+
 
 .genres-index {
   width: 200px;
@@ -31,12 +36,6 @@
 .label-false {
   margin-left: 3px;
   margin-right: 40px;
-}
-
-.table-striped {
-  margin-top: 50px;
-  margin-left: 50px;
-  width: 40%;
 }
 
 .table-genre {

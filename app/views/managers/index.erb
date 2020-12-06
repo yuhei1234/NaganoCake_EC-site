@@ -1,10 +1,13 @@
-<div style="margin-top: 50px; margin-left: 100px;">
-  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">管理者画面</h4>
-</div>
+
+<h4 class="managers-index">管理者画面</h4>
+
  
-<div style="font-size: 30px; margin-top: 50px; margin-left: 150px;">
+<div class="managers-todays-order">
     本日の注文件数
-    <span style="margin-left: 30px;">
-        <%= link_to "aaa" %>件
+    <span class="managers-todays-order-count">
+        <%= link_to managers_orders_path do %>
+          <%= Order.where(created_at: Date.today).count %>
+        <% end %>
+        <span>件</span>
     </span>
 </div>

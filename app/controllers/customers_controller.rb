@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
     redirect_to customers_path
   end
   
-  def confilm
+  def confirm
     @customer = current_customer
   end
   

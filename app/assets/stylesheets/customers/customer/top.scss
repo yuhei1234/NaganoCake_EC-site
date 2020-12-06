@@ -3,6 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.ec-top {
+  width: 80%;
+  margin-top: 100px;
+  padding: 80px 60px;
+  border: 1px solid;
+  right: 0;
+}
+
 .customers-genres-bar {
   border: 2px solid;
   margin-top: 100px;
@@ -24,8 +32,7 @@
 
 .top-message {
   width: 500px;
-  margin-top: 50px;
-  margin-left: 30px;
+  margin: auto;
   padding: 30px 40px;
   border: 1px solid;
 }
@@ -35,5 +42,20 @@
 }
 
 .top-recommend-items {
-  margin-left: 30px;
+  font-weight: bold;
+}
+
+.top-recommend-item {
+  display: flex;
+}
+
+.top-recommend-item-1 {
+  width: 200px;
+  height: 120px;
+  margin-right: 40px;
+  border: 1px solid;
+}
+
+.top-more-items {
+  margin: 30px 0;
 }
