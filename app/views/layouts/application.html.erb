@@ -13,11 +13,34 @@
 
   <body>
     <div class="header">
-      <nav class="header-navigation">
-        <div class="nav-header">LOGO</div>
-        <div class="slide-menu">
-          <ul class="nav navbar-right">
-            <% if manager_signed_in? %>
+      <div class="nav-header">LOGO</div>
+      <% if customer_signed_in? %>
+        <div class="customer-name">
+          ようこそ、<%= (current_customer.last_name + current_customer.first_name) %>さん！
+        </div>
+        <nav class="header-navigation">
+          <div class="slide-menu">
+            <ul class="nav navbar-right">
+              <li class="", style="display: inline-block;">
+                <%= link_to "マイページ", customers_path(current_customer) %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "商品一覧", items_path %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "カート", cart_items_path(current_customer) %>
+              </li>
+              <li class="", style="display: inline-block;">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        
+      <% elsif manager_signed_in? %>
+        <nav class="header-navigation">
+          <div class="slide-menu">
+            <ul class="nav navbar-right">
               <li class="", style="display: inline-block;">
                 <%= link_to "商品一覧", managers_items_path %>
               </li>
@@ -33,20 +56,13 @@
               <li class="", style="display: inline-block;">
                 <%= link_to "ログアウト", destroy_manager_session_path, method: :delete %>
               </li>
-            <% elsif customer_signed_in? %>
-              <li class="", style="display: inline-block;">
-                <%= link_to "マイページ", customers_path(current_customer) %>
-              </li>
-              <li class="", style="display: inline-block;">
-                <%= link_to "商品一覧", items_path %>
-              </li>
-              <li class="", style="display: inline-block;">
-                <%= link_to "カート", cart_items_path(current_customer) %>
-              </li>
-              <li class="", style="display: inline-block;">
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-              </li>
-            <% else %>
+            </ul>
+          </div>
+        </nav>
+      <% else %>
+        <nav class="header-navigation">
+          <div class="slide-menu">
+            <ul class="nav navbar-right">
               <li class="", style="display: inline-block;">
                 <%= link_to "About", "/customers/about" %>
               </li>
@@ -59,9 +75,10 @@
               <li class="", style="display: inline-block;">
                 <%= link_to "ログイン", new_customer_session_path %>
               </li>
-            <% end %>
-          </ul>
-        </div>
+            </ul>
+          </div>
+        </nav>
+        <% end %>
       </nav>
     </div>
     
