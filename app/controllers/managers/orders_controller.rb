@@ -1,14 +1,14 @@
 class Managers::OrdersController < ApplicationController
   def index
     @orders = Order.order("id DESC").page(params[:page]).per(10)
-    @order_item = OrderItem.all
+    @order_items = OrderItem.all
   end
   
   def show
     @orders = Order.all
     @order = Order.find(params[:id])
     
-    @order_item = OrderItem.all
+    @order_items = OrderItem.all
   end
   
   def update

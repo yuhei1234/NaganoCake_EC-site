@@ -1,0 +1,9 @@
+<% genres.each do |genre| %>
+  <% if genre.is_active == true %>
+    <div style="margin-bottom: 30px;">
+      <%= link_to items_path(genre_select: genre.id) do %>
+        <%= genre.name %></br>
+      <% end %>
+    </div>
+  <% end %>
+<% end %> 

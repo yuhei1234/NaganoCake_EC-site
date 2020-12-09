@@ -1,8 +1,9 @@
 
 <!----css => app/assets/stylesheets/managers/customers/edit.scss>-->
+<!----helpers => app/helpers/managers.helper.rb>-->
 
 <h4 class="managers-edit-index">
-  <%= @customer.last_name + @customer.first_name %>さんの会員情報編集
+  <%= name(@customer) %>さんの会員情報編集
 </h4>
 
 <div class="container">

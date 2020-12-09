@@ -73,18 +73,18 @@
     <div class="order-option">
       <h4 class="order-option-tag">お届け先</h4>
       <div class="order-option-item">
-        <span><%= @order.post_number %></span>
-        <span><%= @order.address %></span>
-        <P><%= @order.name %></P>
+        <%= @order.post_number + " " + @order.address %></br>
+        <%= @order.name %>
       </div>
     </div>
   </div>
   <div class="row">
     <%= form_with model: @order, local: true do |f| %>
-      <%= f.hidden_field :post_number, :value => @order.post_number %>
-      <%= f.hidden_field :address,     :value => @order.address %>
-      <%= f.hidden_field :name,        :value => @order.name %>
-      <%= f.hidden_field :total_price, :value => @order.total_price %>
+      <%= f.hidden_field :post_number,    :value => @order.post_number %>
+      <%= f.hidden_field :address,        :value => @order.address %>
+      <%= f.hidden_field :name,           :value => @order.name %>
+      <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+      <%= f.hidden_field :total_price,    :value => @order.total_price %>
       <%= f.submit "購入を確定する", class: "btn btn-lg btn-success order-confirm-button" %>
     <% end %>
   </div>
