@@ -1,5 +1,6 @@
 
 <!----css => app/assets/stylesheets/managers/customers/index.scss>-->
+<!----helpers => app/helpers/managers.helper.rb>-->
 
 <h4 class="managers-index">会員一覧</h4>
 
@@ -16,7 +17,7 @@
       <td><%= customer.id %></td>
       <td>
         <%= link_to managers_customer_path(customer) do %>
-          <%= customer.last_name + customer.first_name %>
+          <%= name(customer) %>
         <% end %>
       </td>
       <td><%= customer.email %></td>

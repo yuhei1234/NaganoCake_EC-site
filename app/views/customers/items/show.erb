@@ -6,13 +6,11 @@
     <tr>
       <th class="items-genres-table-index">ジャンル検索</th>
     </tr>
-    <% @genres.each do |genre| %>
-      <% if genre.is_active == true %>
-        <tr>
-          <td class="items-genres-table-content"><%= genre.name %></td>
-        </tr>
-      <% end %>
-    <% end %>
+    <tr>
+      <td class="items-genres-table-content">
+        <%= render "customers/items/genre_select", genres: @genres %>
+      </td>
+    </tr>
   </table>
 </div>
 

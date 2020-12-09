@@ -1,7 +1,14 @@
 class Customers::ItemsController < ApplicationController
   def index
     @genres = Genre.all
-    @items = Item.all.page(params[:page]).per(12)
+    
+    if params[:genre_select] != nil
+      @items = Item.where(genre_id: params[:genre_select].to_i)
+    elsif params[:search] != nil
+      @items = Item.where("name LIKE ?", "%#{params[:search]}%")
+    else
+      @items = Item.all
+    end
   end
   
   def show

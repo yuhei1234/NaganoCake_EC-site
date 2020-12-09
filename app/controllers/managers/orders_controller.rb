@@ -14,6 +14,14 @@ class Managers::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(managers_order_params)
+    if @order.progress_status == "入金確認"
+      @order_items = OrderItem.all
+      @order_items.each do |order_item|
+        if @order.id == order_item.order_id
+          order_item.update(making_status: "製作待ち")
+        end
+      end
+    end
     redirect_to managers_order_path(@order)
   end
   
