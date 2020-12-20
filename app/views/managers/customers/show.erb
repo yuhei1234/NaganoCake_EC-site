@@ -10,7 +10,16 @@
 <div class="container">
   <div class="row managers-customer-detail">
     <div class="col-sm-2"><%= "顧客ID" %></div>
-    <div class="col-sm-10"><%= @customer.id %></div>
+    <div class="col-sm-10">
+      <%= @customer.id %>
+      <span class ="managers-customer-status">
+        <% if @customer.is_deleted == false%>
+          <%= "有効会員"%>
+        <% else %>
+          <%= "無効会員" %>
+        <% end %>
+      </span>
+    </div>
   </div>
     
   <div class="row managers-customer-detail">

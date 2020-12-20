@@ -49,6 +49,7 @@
         <div class="orders-new-address-select">
           <%= f.radio_button :address_select, 1 %>
           <%= f.label :address, "登録済住所から選択", { value: @deliver } %>
+          <p class="orders-new_address_error"><%= flash[:deliver_error] %></p>
           <p class="orders-new-address">
             <%= f.collection_select :address_id, @delivers, :id, :address, include_blank: "--配送先を選択してください--" %>
           </p>
@@ -59,6 +60,7 @@
             <%= f.radio_button :address_select, 2 %>
             <%= f.label :address, "新しいお届け先" %>
           </div>
+          <span class="new-order-address-error"><%= flash[:new_order_address_error] %></span>
           <div class="">
             <div>
               <span>郵便番号（ハイフンなし）</span>

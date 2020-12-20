@@ -37,6 +37,7 @@
         <div class="items-show-amount">
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.select :amount, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], include_blank: '--個数選択--' %>
+          <p class="items-show-amount-error"><%= flash[:amount_error] %></p>
         </div>
         <div class="items-show-cart-button">
           <%= f.submit "カートに入れる", class: "btn btn-m btn-primary" %>

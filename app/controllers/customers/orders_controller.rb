@@ -1,6 +1,6 @@
 class Customers::OrdersController < ApplicationController
   def index
-    @orders = Order.order("id DESC").page(params[:page]).per(10)
+    @orders = Order.where(customer_id: current_customer.id).order("id DESC").page(params[:page]).per(10)
     @order_items = OrderItem.all
   end
   
@@ -9,29 +9,39 @@ class Customers::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.shipping_cost = 800
     
-    @cart_items = CartItem.all
+    @cart_items = CartItem.where(customer_id: current_customer.id)
     
-    @delivers = Deliver.all
+    @delivers = Deliver.where(customer_id: current_customer.id)
   end
   
   def confirm
-    @cart_items = CartItem.all
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @delivers = Deliver.where(customer_id: current_customer.id)
     
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.shipping_cost = 800
     if params[:order][:address_select] == "0"
       @order.address = current_customer.address
       @order.post_number = current_customer.post_number
       @order.name = (current_customer.last_name + current_customer.first_name)
     elsif params[:order][:address_select] == "1"
-      @order.address = Deliver.find((params[:order][:address_id]).to_i).address
-      @order.post_number = Deliver.find((params[:order][:address_id]).to_i).post_number
-      @order.name = Deliver.find((params[:order][:address_id]).to_i).name
+      if params[:order][:address_id] != ""
+        @order.address = Deliver.find((params[:order][:address_id]).to_i).address
+        @order.post_number = Deliver.find((params[:order][:address_id]).to_i).post_number
+        @order.name = Deliver.find((params[:order][:address_id]).to_i).name
+      else
+        redirect_to new_order_path
+        flash[:deliver_error] = "＊配送先を選択＊"
+      end
     else
+      if @order.address == "" || @order.post_number == "" || @order.name == ""
+        redirect_to new_order_path
+        flash[:new_order_address_error] = "＊新しいお届け先を入力＊"
+      end
     end
-    @order.customer_id = current_customer.id
-    @order.shipping_cost = 800
     
-    @orders = Order.all
+    @orders = Order.where(customer_id: current_customer.id)
     
     @order_items = OrderItem.all
   end
@@ -43,7 +53,7 @@ class Customers::OrdersController < ApplicationController
     
     @order.save
     if @order.save
-      @cart_items = CartItem.all
+      @cart_items = CartItem.where(customer_id: current_customer.id)
       @cart_items.each do |cart_item|
         @order_item = OrderItem.new
         @order_item.order_id = @order.id

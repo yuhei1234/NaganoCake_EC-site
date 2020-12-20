@@ -57,6 +57,9 @@
 // managers
 @import "managers/index.scss";
 
+@import "managers/sessions/new.scss";
+@import "managers/registrations/new.scss";
+
 @import "managers/customers/index.scss";
 @import "managers/customers/show.scss";
 @import "managers/customers/edit.scss";
@@ -68,7 +71,7 @@
 
 @import "managers/items/items_index.scss";
 @import "managers/items/items_new.scss";
-@import "managers/items/items_show.scss";
+@import "managers/items/show.scss";
 @import "managers/items/items_edit.scss";
 
 // managers_scss_end

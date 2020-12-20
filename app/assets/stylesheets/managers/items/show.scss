@@ -26,20 +26,17 @@
   margin-bottom: 20px;
 }
 
-.item-main {
-  margin-bottom: 50px;
+.item-show {
+  margin-bottom: 30px;
 }
-
-.item-info {
-  font-size: 18px;
-}
-
-.item-show-name {
-  margin-left: 34px;
+  
+  
+.item-show-info {
+  font-size: 20px;
 }
 
 .item-show-introduction {
-  margin-left: 20px;
+  width: 400px;
 }
 
 .item-show-genre {
@@ -47,11 +44,17 @@
 }
 
 .item-show-price {
-  margin-left: 20px;
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-bottom: 30px;
 }
 
-.item-show-status {
-  margin-left: 30px;
+.item-show-sell {
+  margin-left: 15px;
+}
+
+.item-show-sell-status {
+  margin-left: 20px;
 }
 
 .item-show-submit {

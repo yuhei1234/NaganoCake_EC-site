@@ -1,6 +1,6 @@
 class Customers::DeliversController < ApplicationController
   def index
-    @delivers = Deliver.all
+    @delivers = Deliver.where(customer_id: current_customer.id)
     @deliver = Deliver.new
   end
   
