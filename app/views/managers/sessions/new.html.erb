@@ -1,19 +1,21 @@
 
-<div style="width: 500px; margin: 100px auto;">
-  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">管理者ログイン</h4>
+<!----css => app/assets/stylesheets/managers/sessions/new.scss>-->
+
+<div class="manager-session">
+  <h4 class="manager-session-title">管理者ログイン</h4>
 
   <%= form_with model: @manager, url: manager_session_path, local: true do |f| %>
-    <div class="field" style="margin-top: 30px; margin-left: 100px;">
+    <div class="manager-session-mail">
       <%= "メールアドレス" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
-    <div class="field", style="margin: 20px 0 15px 127px;">
+    <div class="manager-session-pass">
       <%= "パスワード" %>
       <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
     
-    <div class="action" style="margin-top: 20px; margin-left: 250px;">
+    <div class="manager-session-signin">
       <%= f.submit "ログイン", class: "btn btn-m btn-info" %>
     </div>
   <% end %>

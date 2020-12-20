@@ -8,8 +8,8 @@
   <div class="row">
     <h4 class="col-sm-2">購入者</h4>
     <h4 class="col-sm-10">
-      <% link_to managers_customer_path(@order.id) do %>
-        <%= @order.name %>
+      <%= link_to managers_customer_path(@order.customer_id) do %>
+        <%= @order.customer.last_name + @order.customer.first_name %>
       <% end %>
     </h4>
   </div>

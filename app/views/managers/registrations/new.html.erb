@@ -1,25 +1,28 @@
-<div style="width: 500px; margin: 100px auto;">
-  <h4 style="width: 140px; text-align: center; background-color: #d5d5d5;">管理者登録</h4>
+
+<!----css => app/assets/stylesheets/managers/registrations/new.scss>-->
+
+<div class="manager-registration">
+  <h4 class="manager-registration-title">管理者登録</h4>
   
   <%= form_with model: @manager, url: manager_registration_path, local: true do |f| %>
     <%= render "managers/shared/error_messages", resource: resource %>
 
-    <div class="field" style="margin-top: 30px; margin-left: 100px;">
+    <div class="manager-registration-mail">
       <%= "メールアドレス" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
-    <div class="field" style="margin: 20px 0 15px 127px;">
+    <div class="manager-registration-pass">
       <%= "パスワード" %>
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
-    <div class="field" style="margin: 20px 0 15px 85px;">
+    <div class="manager-registration-pass-confirm">
       <%= "パスワード再入力" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="action" style="margin-top: 20px; margin-left: 130px;">
+    <div class="manager-registration-signup">
       <%= f.submit "新規登録", class: "btn btn-m btn-info" %>
     </div>
   <% end %>
