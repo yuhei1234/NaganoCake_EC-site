@@ -1,0 +1,102 @@
+// Place all the styles related to the Genres controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.customer-index {
+  width: 200px;
+  margin-top: 50px;
+  margin-left: 100px;
+  text-align: center;
+  background-color: #d5d5d5;
+}
+
+.new-deliver-form {
+  margin-top: 20px;
+  margin-left: 150px;
+}
+
+.new-deliver-post-number {
+  margin-bottom: 10px;
+}
+
+.new-deliver-post-number-tag {
+  margin-right: 50px;
+}
+
+.new-deliver-address {
+  margin-bottom: 10px;
+}
+.new-deliver-address-tag {
+  margin-right: 190px;
+}
+
+.new-deliver-name {
+  margin-right: 190px;
+}
+
+.delivers-table {
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.delivers-table-index {
+  width: 55%;
+  border-collapse: collapse;
+  height: 40px;
+}
+
+.delivers-table-index-tag {
+  height: 40px;
+}
+
+.delivers-table-index-post-number {
+  width: 10%;
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.delivers-table-index-address {
+  width: 45%;
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.delivers-table-index-name {
+  width: 15%;
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.delivers-table-index-button {
+  width: 30%;
+  border: 1px solid;
+  background-color: #e5e8f9;
+}
+
+.delivers-table-item-tag {
+  height: 50px;
+}
+
+.delivers-table-item {
+  border: 1px solid;
+}
+
+.delivers-table-item-button {
+  text-align: center;
+}
+
+.delivers-edit-button {
+  display: inline-block;
+}
+
+.delivers-destroy-button {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.delivers-table-button {
+  width: 80px;
+  margin: auto;
+}

@@ -1,0 +1,49 @@
+
+<!----css => app/assets/stylesheets/customers/items/show.scss>-->
+
+<div class="col-lg-3">
+  <table class="items-genres-table">
+    <tr>
+      <th class="items-genres-table-index">ジャンル検索</th>
+    </tr>
+    <tr>
+      <td class="items-genres-table-content">
+        <%= render "customers/items/genre_select", genres: @genres %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="col-lg-9">
+  <div>
+    <div class="items-show-content">
+      <div class="items-show-image">
+        <%= attachment_image_tag @item, :image, :fill, 300, 300, class: "profile-thumb", fallback: "no_image.jpg" %>
+      </div>
+      <div class="items-show-name">
+        <h3><%= @item.name %></h3>
+        <p class="items-show-introduction"><%= @item.introduction %></p>
+        <h3>
+          <span class="items-show-price">¥</span>
+          <%= (@item.price).to_s(:delimited) %>
+          <span class="items-show-tax-tag">（税込）</span>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <%= form_with model: @cart_item, local: true do |f| %> 
+      <div class="items-show-order">
+        <div class="items-show-amount">
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], include_blank: '--個数選択--' %>
+          <p class="items-show-amount-error"><%= flash[:amount_error] %></p>
+        </div>
+        <div class="items-show-cart-button">
+          <%= f.submit "カートに入れる", class: "btn btn-m btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

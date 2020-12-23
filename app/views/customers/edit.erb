@@ -1,0 +1,73 @@
+
+<!----css => app/assets/stylesheets/customers/customer/edit.scss>-->
+
+<h4 class="customer-index">登録情報編集</h4>
+
+<div class="customer-edit-form">
+  <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+    <div class="field">
+      <span>名前</span>
+      <span class="customer-edit-last-name">（姓）</span>
+      <span class="customer-edit-last-name-form">
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+      </span>
+      <span class="customer-edit-first-name">（名）</span>
+      <span class="customer-edit-first-name-form">
+        <%= f.text_field :first_name, autocomplete: "first_name" %>
+      </span>
+    </div>
+  
+    <div class="field">
+      <span>フリガナ</span>
+      <span class="customer-edit-last-name-kana">（セイ）</span>
+      <span class="customer-edit-last-name-kana-form">
+        <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+      </span>
+      <span class="customer-edit-first-name-kana">（メイ）</span>
+      <span class="customer-edit-first-name-kana-form">
+        <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+      </span>
+    </div>
+  
+    <div class="field">
+      <span class="customer-edit-email">メールアドレス</span>
+      <span class="customer-edit-email-form">
+        <%= f.email_field :email, autocomplete: "email" %>
+      </span>
+    </div>
+    
+    <div class="field">
+      <span class="">郵便番号</span>
+      <span class="customer-edit-post">（ハイフンなし）</span>
+      <span class="customer-edit-post-form">
+        <%= f.text_field :post_number, autocomplete: "post_number" %>
+      </span>
+    </div>
+  
+    <div class="field">
+      <span class="customer-edit-address">住所</span>
+      <span class="customer-edit-address-form">
+        <%= f.text_field :address, autocomplete: "address", :size => "57x10" %>
+      </span>
+    </div>
+  
+    <div class="field">
+      <span>電話番号</span>
+      <span class="customer-edit-phone">（ハイフンなし）</span>
+      <span class="customer-edit-phone-form">
+        <%= f.text_field :phone_number, autocomplete: "phone_number" %>
+      </span>
+    </div>
+
+    <div class="customer-edit-action-button">
+      <span class="customer-edit-actions">
+        <%= f.submit "編集内容を保存する", class: "btn btn-primary", style: "padding: 2px 35px;" %>
+      </span>
+      <span class="customer-edit-exit">
+        <% if customer_signed_in? && @customer == current_customer %>
+          <%= link_to "退会する", customers_confirm_path, class: "btn btn-danger", style: "padding: 1px 20px;" %>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+</div>

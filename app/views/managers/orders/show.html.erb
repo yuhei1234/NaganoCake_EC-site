@@ -1,0 +1,83 @@
+
+<!----css => app/assets/stylesheets/managers/orders/show.scss>-->
+<!----helpers => app/helpers/application_helper.rb>-->
+
+<h4 class="managers-index">注文履歴詳細</h4>
+
+<div class="container managers-orders-show">
+  <div class="row">
+    <h4 class="col-sm-2">購入者</h4>
+    <h4 class="col-sm-10">
+      <%= link_to managers_customer_path(@order.customer_id) do %>
+        <%= @order.customer.last_name + @order.customer.first_name %>
+      <% end %>
+    </h4>
+  </div>
+    
+  <div class="row">
+    <h4 class="col-sm-2">配送先</h4>
+    <h4 class="col-sm-10">
+      <%= "〒" + @order.post_number + " " + @order.address %></br>
+      <%= @order.name %>
+    </h4>
+  </div>
+    
+  <div class="row">
+    <h4 class="col-sm-2">支払方法</h4>
+    <h4 class="col-sm-10"><%= @order.payment_method %></h4>
+  </div>
+    
+  <div class="row">
+    <h4 class="col-sm-2">注文ステータス</h4>
+    <h4 class="col-sm-10">
+      <%= form_with model: @order, url: managers_order_path(@order.id), method: :patch, local: true do |f| %>
+        <%= f.select :progress_status, Order.progress_statuses.keys %>
+        <%= f.submit "更新", class: "btn btn-primary" %>
+      <% end %>
+    </h4>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-9">
+      <table class="table table-striped managers-orders-show-table">
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+        </tr>
+        <% @order_items.each do |order_item| %>
+          <% if order_item.order_id == @order.id %>
+            <tr>
+              <td><%= order_item.item.name %></td>
+              <td><%= tax(order_item.item.price) %></td>
+              <td><%= order_item.amount %></td>
+              <td><%= sum_total_price(order_item.item.price, order_item.amount) %></td>
+              <td>
+                <%= form_with model: order_item, url: managers_order_item_path(order_item), method: :patch, local: true do |f| %>
+                  <%= f.select :making_status, OrderItem.making_statuses.keys %>
+                  <%= f.submit "更新", class: "btn btn-sm btn-primary" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-sm-3 managers-orders-show-price">
+      <div class="managers-orders-show-price-detail">
+        <div class="col-sm-7">商品合計</div>
+        <div class="col-sm-5"><%= (@order.total_price - @order.shipping_cost).to_s(:delimited) %>円</div>
+      </div>
+      <div class="managers-orders-show-price-detail">
+        <div class="col-sm-7">送料</div>
+        <div class="col-sm-5"><%= @order.shipping_cost %>円</div>
+      </div>
+      <div class="managers-orders-show-price-detail">
+        <div class="col-sm-7 managers-orders-show-total-price">請求金額合計</div>
+        <div class="col-sm-5 managers-orders-show-total-price"><%= (@order.total_price).to_s(:delimited) %>円</div>
+      </div>
+    </div>
+  </div>
+</div>

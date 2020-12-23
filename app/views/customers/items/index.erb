@@ -1,0 +1,51 @@
+
+<!----css => app/assets/stylesheets/customers/items/index.scss>-->
+
+<div class="col-lg-3">
+  <table class="items-genres-table">
+    <tr>
+      <th class="items-genres-table-index">ジャンル検索</th>
+    </tr>
+    <tr>
+      <td class="items-genres-table-content">
+        <%= render "customers/items/genre_select", genres: @genres %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="col-lg-9">
+  <h2>商品一覧
+    <span>（全</span>
+    <span><%= @items.count %></span>
+    <span>件）</span>
+  </h2>
+  
+  <div class="search">
+    <%= form_with model: @item, method: :get, local: true do |f| %>
+      <%= f.text_field :search, :placeholder => "商品検索ができます", style: "width: 150px;" %>
+      <%= f.submit "Search", class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+  
+  <div>
+    <div class="items-index-contents">
+      <% @items.each do |item| %>
+        <div class="items-index-content">
+          <div>
+            <%= attachment_image_tag item, :image, :fill, 100, 100, class: "profile-thumb", fallback: "no_image.jpg" %>
+          </div>
+          <p>
+            <%= link_to item_path(item) do %>
+              <%= item.name %>
+            <%end %>
+          </p>
+          <p>
+            <%= (item.price).to_s(:delimited) %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+  

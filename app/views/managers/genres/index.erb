@@ -1,0 +1,57 @@
+
+<!----css => app/assets/stylesheets/managers/genres.scss>-->
+
+<h4 class="genres-index">ジャンル一覧・追加</h4>
+
+<div>
+  <%= form_with model: @genre, url: managers_genres_path, local: true do |f| %>
+    <div class="genres-new">
+      <div class="genres-title">
+        <%= "ジャンル" %>
+      </div>
+      <div class="genres-form">
+        <%= f.text_field :name %>
+      </div>
+      <div class="">
+        <%= f.radio_button :is_active, :true %>
+        <span class="label-true"><%= label_tag "有効" %></span>
+      </div>
+      <div class="">
+        <%= f.radio_button :is_active, :false %>
+        <span class="label-false"><%= label_tag "無効" %></span>
+      </div>
+      <div class="genres-submit">
+        <%= f.submit "追加", class: "btn btn-m btn-info"%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table class="table table-striped genres-table">
+  <tr>
+    <th class="table-genre">ジャンル</th>
+    <th class="table-status">状態</th>
+    <th class="table-edit"></th>
+  </tr>
+  <% @genres.each do |genre| %>
+    <tr>
+      <td class="table-item">
+        <%= genre.name %>
+      </td>
+      <td class="table-item">
+        <% if genre.is_active == true %>
+          <%= "有効" %>
+        <% else %>
+          <%= "無効" %>
+        <% end %>
+      </td>
+      <td class="table-item">
+        <%= button_to "編集する", edit_managers_genre_path(genre.id), method: :get, class: "btn btn-sm btn-primary" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="items-paginate">
+  <%= paginate @genres %>
+</div>

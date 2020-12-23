@@ -1,0 +1,22 @@
+
+<!----css => app/assets/stylesheets/customers/delivers/edit.scss>-->
+
+<h4 class="customer-index">配送先編集</h4>
+
+<div class="deliver-edit-form">
+  <%= form_with model: @deliver, local: true do |f| %>
+    <div class="deliver-edit-post-number">
+      <span class="deliver-edit-post-number-tag">郵便番号（ハイフンなし）</span>
+      <%= f.text_field :post_number %>
+    </div>
+    <div class="deliver-edit-address">
+      <span class="deliver-edit-address-tag">住所</span>
+      <%= f.text_field :address, style: "width: 400px;" %>
+    </div>
+    <div>
+      <span class="deliver-edit-name-tag">宛名</span>
+      <%= f.text_field :name %>
+      <%= f.submit "編集する", class: "btn btn-success", style: "margin-left: 300px; padding: 2px 20px;" %>
+    </div>
+  <% end %>
+</div>

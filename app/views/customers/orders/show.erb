@@ -1,0 +1,77 @@
+
+<!----css => app/assets/stylesheets/customers/order_items/show.scss>-->
+<!----helpers => app/helpers/application_helper.rb>-->
+
+<h4 class="customer-index">注文履歴詳細</h4>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
+      <h4>注文情報</h4>
+      <table class="order-item-table">
+        <tr>
+          <th class="order-item-table-index">注文日</th>
+          <td class="order-item-table-item"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th class="order-item-table-index">配送先</th>
+          <td class="order-item-table-item">
+            <%= @order.post_number %></br>
+            <%= @order.address %></br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th class="order-item-table-index">支払方法</th>
+          <td class="order-item-table-item"><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+          <th class="order-item-table-index">ステータス</th>
+          <td class="order-item-table-item"><%= @order.progress_status %></td>
+        </tr>
+      </table>
+    </div>
+  
+    <div class="col-lg-5">
+      <h4>請求情報</h4>
+      <table class="order-item-table">
+        <tr>
+          <th class="order-item-table-index">商品合計</th>
+          <td class="order-item-table-item"><%= @order.total_price - @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <th class="order-item-table-index">配送料</th>
+          <td class="order-item-table-item"><%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <th class="order-item-table-index order-item-total-price-index">ご請求額</th>
+          <td class="order-item-table-item"><%= @order.total_price %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="order-detail">
+    <h4>注文内容</h4>
+    <table class="order-item-detail-table">
+      <tr>
+        <th class="order-item-table-index">商品</th>
+        <th class="order-item-table-index">単価（税込）</th>
+        <th class="order-item-table-index">個数</th>
+        <th class="order-item-table-index">小計</th>
+      </tr>
+      
+      <% @order_items.each do |order_item| %>
+        <% if @order.id == order_item.order_id %>
+          <tr>
+            <td class="order-item-table-item"><%= order_item.item.name %></td>
+            <td class="order-item-table-item"><%= tax(order_item.item.price) %></td>
+            <td class="order-item-table-item"><%= order_item.amount %></td>
+            <td class="order-item-table-item"><%= sum_total_price(order_item.price, order_item.amount) %></td>
+          </tr>  
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+// Place all the styles related to the Genres controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.genres-table {
+  width: 70%;
+  margin: 50px auto 20px auto;
+}
+
+
+.genres-index {
+  width: 200px;
+  margin-top: 50px;
+  margin-left: 100px;
+  text-align: center;
+  background-color: #d5d5d5;
+}
+
+.genres-new {
+  margin-top: 50px;
+  margin-left: 50px;
+  display: flex;
+  flex-wrap: no-wrap;
+}
+
+.genres-form {
+  margin: 0 20px;
+}
+
+.label-true {
+  margin-left: 3px;
+  margin-right: 20px;
+}
+
+.label-false {
+  margin-left: 3px;
+  margin-right: 40px;
+}
+
+.table-genre {
+  width: 40%;
+}
+
+.table-status {
+  width: 30%;
+}
+
+.table-edit {
+  width: 30%;
+}
+
+
+

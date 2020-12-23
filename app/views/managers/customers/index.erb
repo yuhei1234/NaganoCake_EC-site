@@ -1,0 +1,37 @@
+
+<!----css => app/assets/stylesheets/managers/customers/index.scss>-->
+<!----helpers => app/helpers/managers.helper.rb>-->
+
+<h4 class="managers-index">会員一覧</h4>
+
+
+<table class="table table-striped managers-customers-table">
+  <tr>
+    <th>会員ID</th>
+    <th>氏名</th>
+    <th>メールアドレス</th>
+    <th>ステータス</th>
+  </tr>
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.id %></td>
+      <td>
+        <%= link_to managers_customer_path(customer) do %>
+          <%= name(customer) %>
+        <% end %>
+      </td>
+      <td><%= customer.email %></td>
+      <td>
+        <% if customer.is_deleted == false %>
+          <%= "有効" %>
+        <% else %>
+          <%= "退会済" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="paginate">
+  <%= paginate @customers %>
+</div>

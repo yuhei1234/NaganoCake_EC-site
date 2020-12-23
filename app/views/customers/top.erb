@@ -1,0 +1,53 @@
+
+<!----css => app/assets/stylesheets/customers/customer/top.scss>-->
+
+<div class="col-lg-3">
+  <table class="customers-genres-bar">
+    <tr>
+      <th class="customers-genres-bar-index">ジャンル検索</th>
+    </tr>
+    <% @genres.each do |genre| %>
+      <% if genre.is_active == true %>
+        <tr>
+          <td class="customers-genres-bar-name"><%= genre.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="col-lg-9">
+  <div class="ec-top">
+    <div class="top-message">
+      <h4 class="top-message-title">
+        ようこそ、NaganoCakeへ!</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。
+      </h4>
+    </div>
+  </div>  
+  <div>
+    <h3 class="top-recommend-items">オススメ商品</h3>
+    <div class="top-recommend-item">
+      <div>
+        <div class="top-recommend-item-1">商品画像</div>
+        <div class="">商品名</div>
+      </div>
+      <div>
+        <div class="top-recommend-item-1">商品画像</div>
+        <div class="">商品名</div>
+      </div>
+      <div>
+        <div class="top-recommend-item-1">商品画像</div>
+        <div class="">商品名</div>
+      </div>
+      <div>
+        <div class="top-recommend-item-1">商品画像</div>
+        <div class="">商品名</div>
+      </div>
+    </div>
+    <div class="top-more-items"><%= link_to "もっと見る>", items_path %></div>
+  </div>
+    
+</div>

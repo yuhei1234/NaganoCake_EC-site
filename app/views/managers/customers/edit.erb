@@ -1,0 +1,58 @@
+
+<!----css => app/assets/stylesheets/managers/customers/edit.scss>-->
+<!----helpers => app/helpers/managers.helper.rb>-->
+
+<h4 class="managers-edit-index">
+  <%= name(@customer) %>さんの会員情報編集
+</h4>
+
+<div class="container">
+  <%= form_with model: @customer, url: managers_customer_path, method: :patch, local: true do |f| %>
+    <div class="row managers-customer-edit">
+      <div class="col-sm-2"><%= "会員ID" %></div>
+      <div class="col-sm-10"><%= @customer.id %></div>
+    </div>
+  
+    <div class="row managers-customer-edit">
+      <div class="col-sm-2"><%= "氏名" %></div>
+      <div class="col-sm-10"><%= f.text_field :last_name %><%= f.text_field :first_name, style: "margin-left: 20px;" %></div>
+    </div>
+    
+    <div class="row managers-customer-edit">
+      <div class="col-sm-2"><%= "フリガナ" %></div>
+      <div class="col-sm-10"><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana, style: "margin-left: 20px;"  %></div>
+    </div>
+    
+    <div class="row managers-customer-edit">
+      <div class="col-sm-2"><%= "郵便番号" %></div>
+      <div class="col-sm-10"><%= f.text_field :post_number %></div>
+    </div>
+    
+    <div class="row managers-customer-edit">
+      <div class="col-sm-2"><%= "住所" %></div>
+      <div class="col-sm-10"><%= f.text_field :address, style: "width: 450px;" %></div>
+    </div>
+    
+    <div class="row managers-customer-edit">
+      <div class="col-sm-2"><%= "電話番号" %></div>
+      <div class="col-sm-10"><%= f.text_field :phone_number %></div>
+    </div>
+    
+    <div class="row managers-customer-edit">
+      <div class="col-sm-2"><%= "メールアドレス" %></div>
+      <div class="col-sm-10"><%= f.text_field :email, style: "width: 320px;" %></div>
+    </div>
+    
+    <div class="row managers-customer-edit">
+      <div class="col-sm-2"><%= "会員ステータス" %></div>
+      <div class="col-sm-10">
+        <span class="managers-customer-deleted"><%= f.radio_button :is_deleted, false, checked: true %><%= f.label "有効" %></span>
+        <span><%= f.radio_button :is_deleted, true %><%= f.label "退会済み" %></span>
+      </div>
+    </div>
+    
+    <div class="row managers-customer-edit">
+      <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

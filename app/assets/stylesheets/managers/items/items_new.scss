@@ -1,0 +1,48 @@
+// Place all the styles related to the Genres controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.items-index {
+  width: 200px;
+  margin-top: 50px;
+  margin-left: 100px;
+  text-align: center;
+  background-color: #d5d5d5;
+}
+
+.item-image {
+  margin-left: 0px;
+}
+
+.item-button {
+  margin-top: 5px;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
+.item-new-name > input[type="text"] {
+  width: 54%;
+  margin-left: 30px;
+}
+
+.item-new-introduction {
+  margin-left: 16px;
+}
+
+.item-new-genres {
+  margin-left: 16px;
+}
+
+.item-new-price > input[type="text"] {
+  width: 54%;
+  margin-left: 16px;
+}
+
+.item-new-status {
+  margin-left: 2px;
+}
+

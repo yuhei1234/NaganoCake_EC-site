@@ -1,0 +1,28 @@
+
+<!----css => app/assets/stylesheets/managers/genres.scss>-->
+
+<h4 class="genres-index">ジャンル編集</h4>
+
+<div>
+  <%= form_with model: @genre, url: managers_genre_path, local: true do |f| %>
+    <div class="genres-new">
+      <div class="genres-title">
+        <%= "ジャンル" %>
+      </div>
+      <div class="genres-form">
+        <%= f.text_field :name, style: "margin: 0 20px;" %>
+      </div>
+      <div>
+        <%= f.radio_button :is_active, :true %>
+        <span class="label-true"><%= label_tag "有効" %></span>
+      </div>
+      <div>
+        <%= f.radio_button :is_active, :false %>
+        <span class="label-false"><%= label_tag "無効" %></span>
+      </div>
+      <div class="genres-submit">
+        <%= f.submit "変更を保存する", class: "btn btn-m btn-info"%>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+
+<!----css => app/assets/stylesheets/customers/customer/confilm.scss>-->
+
+<div class="customer-confilm">
+  <h3 class="customer-confilm-title">本当に退会しますか？</h3>
+
+  <div class="customer-confilm-introduction">
+    退会すると、会員登録情報や</br>
+    これまでの購入履歴が閲覧できなくなります。</br>
+    退会する場合は、「退会する」をクリックしてください。
+  </div>
+
+  <div class="customer-confilm-button">
+    <div class="customer-confilm-button-active">
+      <%= link_to "退会しない", edit_customers_path, method: :get, class: "btn btn-primary" %>
+    </div>
+    <div class="customer-confilm-button-hide">
+      <% if customer_signed_in? && @customer == current_customer %>
+        <%= link_to "退会する", customers_hide_path, method: :put, class: "btn btn-danger"%>
+      <% end %>
+    </div>
+  </div>
+</div>

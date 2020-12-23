@@ -1,0 +1,61 @@
+
+<!----css => app/assets/stylesheets/managers/customers/show.scss>-->
+<!----helpers => app/helpers/managers.helper.rb>-->
+
+<h4 class="managers-show-index">
+  <%= name(@customer) %>さんの</br>会員詳細
+</h4>
+
+
+<div class="container">
+  <div class="row managers-customer-detail">
+    <div class="col-sm-2"><%= "顧客ID" %></div>
+    <div class="col-sm-10">
+      <%= @customer.id %>
+      <span class ="managers-customer-status">
+        <% if @customer.is_deleted == false%>
+          <%= "有効会員"%>
+        <% else %>
+          <%= "無効会員" %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+    
+  <div class="row managers-customer-detail">
+    <div class="col-sm-2"><%= "氏名" %></div>
+    <div class="col-sm-10"><%= name(@customer) %></div>
+  </div>
+    
+  <div class="row managers-customer-detail">
+    <div class="col-sm-2"><%= "フリガナ" %></div>
+    <div class="col-sm-10"><%= name_kana(@customer) %></div>
+  </div>
+    
+  <div class="row managers-customer-detail">
+    <div class="col-sm-2"><%= "郵便番号" %></div>
+    <div class="col-sm-10"><%= @customer.post_number %></div>
+  </div>
+    
+  <div class="row managers-customer-detail">
+    <div class="col-sm-2"><%= "住所" %></div>
+    <div class="col-sm-10"><%= @customer.address %></div>
+  </div>
+    
+  <div class="row managers-customer-detail">
+    <div class="col-sm-2"><%= "電話番号" %></div>
+    <div class="col-sm-10"><%= @customer.phone_number %></div>
+  </div>
+      
+  <div class="row managers-customer-detail">
+    <div class="col-sm-2"><%= "メールアドレス" %></div>
+    <div class="col-sm-10"><%= @customer.email %></div>
+  </div>
+  
+  <div>
+    <%= link_to "編集する", edit_managers_customer_path(@customer.id), class: "btn btn-sm btn-primary managers-customer-edit-button" %>
+    <%= link_to "注文履歴一覧を見る", managers_orders_path, class: "btn btn-sm btn-primary" %>
+  </div>
+  
+  
+</div>

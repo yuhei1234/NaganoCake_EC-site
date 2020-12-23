@@ -1,0 +1,13 @@
+
+<h4 class="managers-index">管理者画面</h4>
+
+ 
+<div class="managers-todays-order">
+    本日の注文件数
+    <span class="managers-todays-order-count">
+        <%= link_to managers_orders_path do %>
+          <%= Order.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).count %>
+        <% end %>
+        <span>件</span>
+    </span>
+</div>

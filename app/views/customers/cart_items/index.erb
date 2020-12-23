@@ -1,0 +1,75 @@
+
+<!----css => app/assets/stylesheets/customers/cart_items.scss>-->
+<!----helpers => app/helpers/application_helper.rb>-->
+
+<h4 class="customer-index">ショッピングカート</h4>
+  <div>
+    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-sm btn-danger cart-all-delete-button" %>
+  </div>
+</div>
+
+<table class="cart-table-index">
+  <tr class="cart-table-index-tag">
+    <th class="cart-table-index-name">商品名</th>
+    <th class="cart-table-index-price">単価（税込）</th>
+    <th class="cart-table-index-amount">数量</th>
+    <th class="cart-table-index-total-price">小計</th>
+    <th class="cart-table-index-delete"></th>
+  </tr>
+  
+  <% @cart_items.each do |cart_item| %>
+    <tr class="cart-table-item-tag">
+      <td class="cart-table-item cart-table-item-name">
+        <span class="cart-item-image">
+          <%= attachment_image_tag cart_item.item, :image, :fill, 50, 50, fallback: "no_image.jpg" %>
+        </span>
+        <span class="">
+          <%= cart_item.item.name %>
+        </span>
+      </td>
+      <td class="cart-table-item">
+        <%= tax(cart_item.item.price) %>
+      </td>
+      <td class="cart-table-item cart-table-item-amount">
+        <%= form_with model: cart_item, local: true do |f| %>
+          <span>
+            <%= f.text_field :amount, style: "width: 30px;" %>
+          </span>
+          <span>
+            <%= f.submit "変更", class: "btn btn-xs btn-primary" %>
+          </span>
+        <% end %>
+      </td>
+      <td class="cart-table-item">
+        <%= sum_total_price(cart_item.item.price, cart_item.amount) %>
+      </td>
+      <td class="cart-table-item cart-table-item-delete">
+        <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="cart-continue-price">
+  <div class="cart-buy-continue">
+    <%= link_to "買い物を続ける", items_path, class: "btn btn-m btn-primary" %>
+  </div>
+  <div>
+    <table class="cart-table-total-price">
+      <tr>
+        <th class="cart-table-total-price-index">合計金額</th>
+        <td class="cart-table-total-price-tag">
+          <% @sum_cart_total_price = 0 %>
+          <% @cart_items.each do |cart_item| %>
+            <% @sum_cart_total_price += sum_total_price(cart_item.item.price, cart_item.amount) %>
+          <% end %>
+          <%= @sum_cart_total_price %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="cart-order-bottun">
+  <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success", style: "padding: 15px 50px;" %>
+</div>

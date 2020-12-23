@@ -1,0 +1,103 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-navigation {
+  height: 45px;
+  border-bottom: 2px solid;
+}
+
+.nav-header {
+  width: 150px;
+  font-size: 22px;
+  margin-top: 20px;
+  margin-left: 30px;
+  text-align: center;
+  border: 2px solid;
+}
+
+.navbar-right {
+  margin-right: 50px;
+}
+
+.customer-name {
+  margin-left: 500px;
+}
+
+.paginate {
+  width: 300px;
+  margin: 0 auto;
+}
+
+
+// managers
+@import "managers/index.scss";
+
+@import "managers/sessions/new.scss";
+@import "managers/registrations/new.scss";
+
+@import "managers/customers/index.scss";
+@import "managers/customers/show.scss";
+@import "managers/customers/edit.scss";
+
+@import "managers/orders/index.scss";
+@import "managers/orders/show.scss";
+
+@import "managers/genres.scss";
+
+@import "managers/items/items_index.scss";
+@import "managers/items/items_new.scss";
+@import "managers/items/show.scss";
+@import "managers/items/items_edit.scss";
+
+// managers_scss_end
+
+
+
+// customers
+@import "customers/customer/top.scss";
+@import "customers/customer/about.scss";
+@import "customers/customer/show.scss";
+@import "customers/customer/edit.scss";
+@import "customers/customer/confilm.scss";
+
+@import "customers/items/index.scss";
+@import "customers/items/show.scss";
+
+@import "customers/delivers/index.scss";
+@import "customers/delivers/edit.scss";
+
+@import "customers/cart_items.scss";
+
+@import "customers/orders/index.scss";
+@import "customers/orders/new.scss";
+@import "customers/orders/confirm.scss";
+@import "customers/orders/thanks.scss";
+
+@import "customers/order_items/show.scss";
+
+// customers_scss_end

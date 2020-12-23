@@ -1,0 +1,37 @@
+
+<!----css => app/assets/stylesheets/managers/orders/index.scss>-->
+
+<h4 class="managers-index">注文履歴一覧</h4>
+
+<table class="table table-striped managers-orders-table">
+  <tr>
+    <th>購入日時</th>
+    <th>購入者</th>
+    <th>注文個数</th>
+    <th>注文ステータス</th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td>
+        <%= link_to managers_order_path(order.id) do %>
+          <%= order.created_at.strftime('%Y/%m/%d %H:%M') %>
+        <% end %>
+      </td>
+      <td><%= (order.customer.last_name + order.customer.first_name) %></td>
+      <td>
+        <% @item_count = 0 %>
+        <% @order_items.each do |order_item| %>
+          <% if order.id == order_item.order_id %>
+            <% @item_count += order_item.amount %>
+          <% end %>
+        <% end %>
+        <%= @item_count %>
+      </td>
+      <td><%= order.progress_status %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="paginate">
+  <%= paginate @orders %>
+</div>

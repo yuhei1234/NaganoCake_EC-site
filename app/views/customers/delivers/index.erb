@@ -1,0 +1,54 @@
+
+<!----css => app/assets/stylesheets/customers/delivers/index.scss>-->
+
+<h4 class="customer-index">配送先登録/一覧</h4>
+
+<div class="new-deliver-form">
+  <%= form_with model: @deliver, local: true do |f| %>
+    <div class="new-deliver-post-number">
+      <span class="new-deliver-post-number-tag">郵便番号（ハイフンなし）</span>
+      <%= f.text_field :post_number %>
+    </div>
+    <div class="new-deliver-address">
+      <span class="new-deliver-address-tag">住所</span>
+      <%= f.text_field :address, style: "width: 400px;" %>
+    </div>
+    <div>
+      <span class="new-deliver-name">宛名</span>
+      <%= f.text_field :name %>
+      <%= f.submit "登録する", class: "btn btn-success", style: "margin-left: 300px; padding: 2px 20px;" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="delivers-table">
+  <table class="delivers-table-index">
+    <tr class="delivers-table-index-tag">
+      <th class="delivers-table-index-post-number">郵便番号</th>
+      <th class="delivers-table-index-address">住所</th>
+      <th class="delivers-table-index-name">宛名</th>
+      <th class="delivers-table-index-button"></th>
+    </tr>
+    <% @delivers.each do |deliver| %>
+      <tr class="delivers-table-item-tag">
+        <td class="delivers-table-item">
+          <%= deliver.post_number %>
+        </td>
+        <td class="delivers-table-item">
+          <%= deliver.address %>
+        </td>
+        <td class="delivers-table-item">
+          <%= deliver.name %>
+        </td>
+        <td class="delivers-table-item delivers-table-item-button">
+          <span class="delivers-edit-button">
+            <%= button_to "編集する", edit_deliver_path(deliver), method: :get, class: "btn btn-primary center-block" %>
+          </span>
+          <span class="delivers-destroy-button">
+            <%= button_to "削除する", deliver_path(deliver), method: :delete, class: "btn btn-danger center-block" %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
